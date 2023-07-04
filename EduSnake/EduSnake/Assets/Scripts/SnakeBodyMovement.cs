@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnakeBodyMovement : MonoBehaviour
+public class SnakeBodyMovement : SnakeMovement
 {
-    private SnakeHeadMovement snakeHeadMovement;
+    private Transform snakeParent;
+    private Transform previousPart;
 
-    private void Start()
+    protected override void Start()
     {
-        Transform snakeParent = transform.parent;
-        snakeHeadMovement = snakeParent.GetChild(0).GetComponent<SnakeHeadMovement>();
+        base.Start();
+        snakeParent = transform.parent;
+        previousPart = snakeParent.GetChild(transform.GetSiblingIndex() - 1);
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-        transform.position = snakeHeadMovement.PreviousPosition;
-        transform.rotation = snakeHeadMovement.PreviousRotation;
+        float partsDistance = Vector3.Distance(transform.position, previousPart.position);
+        if (partsDistance >= 0.98f)
+        {
+            HeadMovement();
+        }
+
+        transform.LookAt(previousPart);
     }
 }

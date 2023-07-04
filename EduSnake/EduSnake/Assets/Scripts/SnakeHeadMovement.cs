@@ -2,65 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnakeHeadMovement : MonoBehaviour
+public class SnakeHeadMovement : SnakeMovement
 {
-    private float slowTimeToMove = 1.0f;
-    private float normalTimeToMove = 0.750f;
-    private float fastTimeToMove = 0.50f;
-    private float currentTimeToMove = 0.0f;
-    private float actualTimeToMove = 0.0f;
-    private float rotationAngle = 90.0f;
+    private float rotationSpeed = 80.0f;
+    private float clampValue = 0.085f;
 
-    private Vector3 previousPosition;
-    public Vector3 PreviousPosition { get { return previousPosition; } }
-
-    private Quaternion previousRotation;
-    public Quaternion PreviousRotation { get { return previousRotation; } }
-
-    private void Start()
+    protected override void Start()
     {
-        currentTimeToMove = slowTimeToMove;
+        base.Start();
     }
 
     private void Update()
     {
-        GridMovement();
+        HeadMovement();
         RotateSnakeHead();
-    }
-
-    private void GridMovement()
-    {
-        if (actualTimeToMove <= 0.0f)
-        {
-            previousPosition = transform.position;
-            previousRotation = transform.rotation;
-            transform.Translate(Vector3.forward);
-            actualTimeToMove = currentTimeToMove;
-        }
-
-        actualTimeToMove -= Time.deltaTime;
-    }
-
-    private void TurningRight()
-    {
-        transform.Rotate(Vector3.up, rotationAngle);
-    }
-
-    private void TurningLeft()
-    {
-        transform.Rotate(Vector3.up, -rotationAngle);
     }
 
     private void RotateSnakeHead()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            TurningRight();
-        }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            TurningLeft();
-        }
+        float rotationValue = Input.GetAxis("Horizontal");
+        float angleValue = rotationValue * Time.deltaTime * rotationSpeed;
+        float angleValueY = Mathf.Clamp(angleValue, -clampValue, clampValue);
+        transform.Rotate(Vector3.up, angleValueY);
     }
 }
