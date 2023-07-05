@@ -7,11 +7,20 @@ public class Answer : MonoBehaviour
 {
     [SerializeField] private TMP_Text answerText;
 
-    private void OnCollisionEnter(Collision collision)
+    public void AssignAnswer(int correctAnswer)
     {
-        if (collision.gameObject.layer == 6)
+        answerText.text = correctAnswer.ToString();
+    }
+
+    public void GenerateWrongAnswer(int numberRange, int correctAnswer)
+    {
+        int wrongAnswer = 0;
+        do
         {
-            Destroy(gameObject);
+            wrongAnswer = Random.Range(1, numberRange);
         }
+        while (wrongAnswer == correctAnswer);
+
+        answerText.text = wrongAnswer.ToString();
     }
 }

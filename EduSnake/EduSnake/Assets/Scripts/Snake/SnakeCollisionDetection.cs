@@ -6,6 +6,7 @@ public class SnakeCollisionDetection : MonoBehaviour
 {
     [SerializeField] private GameObject snakeBodyPrefab;
     [SerializeField] private LayerMask snakeLayers;
+    [SerializeField] private MathTaskGenerator mathTaskGenerator;
 
     private Transform snakeParent;
 
@@ -23,7 +24,10 @@ public class SnakeCollisionDetection : MonoBehaviour
     {
         if (IsInLayerMask(collision.gameObject, snakeLayers))
         {
-            //Debug.Log(collision.gameObject.name);
+            if (collision.gameObject.layer == 10)
+            {
+                mathTaskGenerator.ShowPlayerWrongChoose();
+            }
         }
 
         if (collision.gameObject.layer == 9)
@@ -31,6 +35,7 @@ public class SnakeCollisionDetection : MonoBehaviour
             int lastSnakePartIndex = snakeParent.childCount - 1;
             Transform lastSnakePart = snakeParent.GetChild(lastSnakePartIndex);
             Instantiate(snakeBodyPrefab, lastSnakePart.position, Quaternion.identity, transform.parent);
+            mathTaskGenerator.ShowPlayerCorrectChoose();
         }
     }
 

@@ -22,7 +22,6 @@ public class SnakeHeadMovement : SnakeMovement
 
     private void RotateSnakeHead()
     {
-        float rotationValue = Input.GetAxis("Horizontal");
         float angleValue = horizontalJoystick.Horizontal * Time.deltaTime * rotationSpeed;
         float angleValueY = Mathf.Clamp(angleValue, -clampValue, clampValue);
         transform.Rotate(Vector3.up, angleValueY);
