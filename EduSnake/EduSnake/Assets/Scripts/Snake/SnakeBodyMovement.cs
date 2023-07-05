@@ -17,9 +17,9 @@ public class SnakeBodyMovement : SnakeMovement
     private void Update()
     {
         float partsDistance = Vector3.Distance(transform.position, previousPart.position);
-        if (partsDistance >= 0.98f)
+        if (partsDistance >= 0.995f)
         {
-            HeadMovement();
+            SnakePartsMovement();
         }
 
         transform.LookAt(previousPart);

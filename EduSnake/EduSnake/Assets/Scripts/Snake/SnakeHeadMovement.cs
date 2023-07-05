@@ -5,16 +5,16 @@ using UnityEngine;
 public class SnakeHeadMovement : SnakeMovement
 {
     private float rotationSpeed = 80.0f;
-    private float clampValue = 0.085f;
+    private float clampValue = 0.082f;
 
     protected override void Start()
     {
         base.Start();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        HeadMovement();
+        SnakePartsMovement();
         RotateSnakeHead();
     }
 
