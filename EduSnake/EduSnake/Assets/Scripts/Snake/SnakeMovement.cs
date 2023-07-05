@@ -11,7 +11,7 @@ public class SnakeMovement : MonoBehaviour
 
     protected virtual void Start()
     {
-        currentMovement = normalMovement;
+        currentMovement = fastMovement;
     }
 
     protected void SnakePartsMovement()

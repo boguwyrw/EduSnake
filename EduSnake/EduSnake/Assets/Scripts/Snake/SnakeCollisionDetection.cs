@@ -21,11 +21,9 @@ public class SnakeCollisionDetection : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if (collision.gameObject.layer == 7 || collision.gameObject.layer == 8)
-        //if (collision.gameObject.layer == snakeLayers)
         if (IsInLayerMask(collision.gameObject, snakeLayers))
         {
-            Debug.Log(collision.gameObject.name);
+            //Debug.Log(collision.gameObject.name);
         }
 
         if (collision.gameObject.layer == 9)
@@ -38,6 +36,6 @@ public class SnakeCollisionDetection : MonoBehaviour
 
     private bool IsInLayerMask(GameObject obj, LayerMask layerMask)
     {
-        return ((layerMask.value & (1 << obj.layer)) > 0);
+        return (layerMask.value & (1 << obj.layer)) > 0;
     }
 }

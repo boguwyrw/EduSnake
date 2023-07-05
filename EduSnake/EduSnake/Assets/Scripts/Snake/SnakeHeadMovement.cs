@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class SnakeHeadMovement : SnakeMovement
 {
-    private float rotationSpeed = 80.0f;
-    private float clampValue = 0.082f;
+    [SerializeField] private Joystick horizontalJoystick;
+
+    private float rotationSpeed = 300.0f;
+    private float clampValue = 0.82f;
 
     protected override void Start()
     {
         base.Start();
     }
 
-    private void LateUpdate()
-    {
+    private void Update()
+    {      
         SnakePartsMovement();
         RotateSnakeHead();
     }
@@ -21,7 +23,7 @@ public class SnakeHeadMovement : SnakeMovement
     private void RotateSnakeHead()
     {
         float rotationValue = Input.GetAxis("Horizontal");
-        float angleValue = rotationValue * Time.deltaTime * rotationSpeed;
+        float angleValue = horizontalJoystick.Horizontal * Time.deltaTime * rotationSpeed;
         float angleValueY = Mathf.Clamp(angleValue, -clampValue, clampValue);
         transform.Rotate(Vector3.up, angleValueY);
     }
