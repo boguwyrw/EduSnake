@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SnakeCollisionDetection : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class SnakeCollisionDetection : MonoBehaviour
     {
         if (IsInLayerMask(collision.gameObject, snakeLayers))
         {
+            if (collision.gameObject.layer == 7)
+            {
+                SceneManager.LoadScene(0);
+            }
+
             if (collision.gameObject.layer == 10)
             {
                 mathTaskGenerator.ShowPlayerWrongChoose();
@@ -34,7 +40,7 @@ public class SnakeCollisionDetection : MonoBehaviour
         {
             int lastSnakePartIndex = snakeParent.childCount - 1;
             Transform lastSnakePart = snakeParent.GetChild(lastSnakePartIndex);
-            Instantiate(snakeBodyPrefab, lastSnakePart.position, Quaternion.identity, transform.parent);
+            Instantiate(snakeBodyPrefab, lastSnakePart.position, Quaternion.identity, snakeParent);
             mathTaskGenerator.ShowPlayerCorrectChoose();
         }
     }

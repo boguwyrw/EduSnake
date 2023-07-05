@@ -9,13 +9,13 @@ public class SnakeMovement : MonoBehaviour
     protected float fastMovement = 6.0f;
     protected float currentMovement = 0.0f;
 
-    protected virtual void Start()
-    {
-        currentMovement = fastMovement;
-    }
-
     protected void SnakePartsMovement()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * currentMovement);
+    }
+
+    public void StartGame()
+    {
+        currentMovement = slowMovement;
     }
 }

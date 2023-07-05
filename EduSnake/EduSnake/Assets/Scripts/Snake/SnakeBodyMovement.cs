@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class SnakeBodyMovement : SnakeMovement
 {
+    [SerializeField] private SphereCollider snakeBodyCollider;
+
     private Transform snakeParent;
     private Transform previousPart;
 
-    protected override void Start()
+
+    private void Start()
     {
-        base.Start();
         snakeParent = transform.parent;
         previousPart = snakeParent.GetChild(transform.GetSiblingIndex() - 1);
+        StartGame();
     }
 
     private void Update()
@@ -19,6 +22,10 @@ public class SnakeBodyMovement : SnakeMovement
         float partsDistance = Vector3.Distance(transform.position, previousPart.position);
         if (partsDistance >= 0.995f)
         {
+            if (snakeBodyCollider.isTrigger)
+            {
+                snakeBodyCollider.isTrigger = false;
+            }
             SnakePartsMovement();
         }
 

@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
+    [SerializeField] private GameObject gameManagerCanvas;
+    [SerializeField] private GameObject movementCanvas;
+    [SerializeField] private GameObject mathTaskGeneratorCanvas;
+
+    [SerializeField] private SnakeMovement snakeMovement;
+
     private void Start()
     {
-        
+        gameManagerCanvas.SetActive(true);
+
+        movementCanvas.SetActive(false);
+        mathTaskGeneratorCanvas.SetActive(false);
     }
 
     private void Update()
@@ -16,5 +24,15 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+    public void StartLevelButton()
+    {
+        gameManagerCanvas.SetActive(false);
+
+        movementCanvas.SetActive(true);
+        mathTaskGeneratorCanvas.SetActive(true);
+
+        snakeMovement.StartGame();
     }
 }

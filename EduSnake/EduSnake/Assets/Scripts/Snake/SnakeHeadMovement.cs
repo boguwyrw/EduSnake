@@ -6,12 +6,12 @@ public class SnakeHeadMovement : SnakeMovement
 {
     [SerializeField] private Joystick horizontalJoystick;
 
-    private float rotationSpeed = 300.0f;
-    private float clampValue = 0.82f;
+    private float rotationSpeed = 450.0f;
+    private float clampValue = 1.1f;
 
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
+        
     }
 
     private void Update()
