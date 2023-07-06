@@ -1613,6 +1613,7 @@ MonoBehaviour:
   resultText: {fileID: 48727160}
   correctAnswerPrefab: {fileID: 5643915846916771668, guid: 8830b62464efef6478e9fa49a21e2ff9, type: 3}
   wrongAnswerPrefab: {fileID: 5874402737241517618, guid: aae50e731d585ba43bbd8e3e9d428419, type: 3}
+  gameManager: {fileID: 2028237996}
 --- !u!1 &1140661415
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,6 +2351,8 @@ MonoBehaviour:
   movementCanvas: {fileID: 806072801}
   mathTaskGeneratorCanvas: {fileID: 1126970063}
   snakeMovement: {fileID: 272201013}
+  gameSizeX: 23
+  gameSizeY: 23
 --- !u!1 &2040344115
 GameObject:
   m_ObjectHideFlags: 0
@@ -2951,10 +2954,6 @@ PrefabInstance:
       propertyPath: mathTaskGenerator
       value: 
       objectReference: {fileID: 1126970068}
-    - target: {fileID: 7396177411803869301, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
-      propertyPath: snakeLayers.m_Bits
-      value: 1408
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
 --- !u!1001 &5583780385173915056

@@ -9,7 +9,7 @@ public class SnakeBodyMovement : SnakeMovement
     private Transform snakeParent;
     private Transform previousPart;
 
-
+    /*
     private void Start()
     {
         snakeParent = transform.parent;
@@ -31,4 +31,5 @@ public class SnakeBodyMovement : SnakeMovement
 
         transform.LookAt(previousPart);
     }
+    */
 }

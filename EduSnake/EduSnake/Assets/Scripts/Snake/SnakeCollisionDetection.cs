@@ -11,6 +11,8 @@ public class SnakeCollisionDetection : MonoBehaviour
 
     private Transform snakeParent;
 
+    //private float bodyPartsOffset = 1.0f;
+
     private void Start()
     {
         snakeParent = transform.parent;
@@ -23,25 +25,26 @@ public class SnakeCollisionDetection : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (IsInLayerMask(collision.gameObject, snakeLayers))
-        {
-            if (collision.gameObject.layer == 7)
-            {
-                SceneManager.LoadScene(0);
-            }
-
-            if (collision.gameObject.layer == 10)
-            {
-                mathTaskGenerator.ShowPlayerWrongChoose();
-            }
-        }
-
         if (collision.gameObject.layer == 9)
         {
             int lastSnakePartIndex = snakeParent.childCount - 1;
-            Transform lastSnakePart = snakeParent.GetChild(lastSnakePartIndex);
-            Instantiate(snakeBodyPrefab, lastSnakePart.position, Quaternion.identity, snakeParent);
+            Transform lastSnakePart = snakeParent.GetChild(lastSnakePartIndex).GetChild(0);
+            Vector3 lastSnakePartPosition = new Vector3(lastSnakePart.position.x, lastSnakePart.position.y, lastSnakePart.position.z);
+            Instantiate(snakeBodyPrefab, lastSnakePartPosition, Quaternion.identity, snakeParent);
             mathTaskGenerator.ShowPlayerCorrectChoose();
+        }
+
+        if (collision.gameObject.layer == 10)
+        {
+            mathTaskGenerator.ShowPlayerWrongChoose();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (IsInLayerMask(other.gameObject, snakeLayers))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 

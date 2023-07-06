@@ -18,13 +18,17 @@ public class MathTaskGenerator : MonoBehaviour
     private int resultNumber = 0;
     private int numberRange = 101;
     private int taskNumber = 1;
+    private int boardGameSizeX = 0;
+    private int boardGameSizeY = 0;
 
     private float spawnAnswersDelayTime = 1.2f;
 
     private List<GameObject> allAnswers = new List<GameObject>();
 
     private void Start()
-    { 
+    {
+        boardGameSizeX = GameManager.InstanceGM.GameSizeX;
+        boardGameSizeY = GameManager.InstanceGM.GameSizeY;
         SpawnAnswers();
     }
 
@@ -35,9 +39,7 @@ public class MathTaskGenerator : MonoBehaviour
 
     private void SpawnCorrectAnswer()
     {
-        int randomPosX = Random.Range(-23, 24);
-        int randomPosZ = Random.Range(-23, 24);
-        GameObject correctAnswerClone = Instantiate(correctAnswerPrefab, new Vector3(randomPosX, 0.0f, randomPosZ), Quaternion.identity);
+        GameObject correctAnswerClone = GeneratePrefab(correctAnswerPrefab);
         allAnswers.Add(correctAnswerClone);
         Answer correctAnswer = correctAnswerClone.GetComponent<Answer>();
         correctAnswer.AssignAnswer(resultNumber);
@@ -45,12 +47,17 @@ public class MathTaskGenerator : MonoBehaviour
 
     private void SpawnWrongAnswer()
     {
-        int randomPosX = Random.Range(-23, 24);
-        int randomPosZ = Random.Range(-23, 24);
-        GameObject wrongAnswerClone = Instantiate(wrongAnswerPrefab, new Vector3(randomPosX, 0.0f, randomPosZ), Quaternion.identity);
+        GameObject wrongAnswerClone = GeneratePrefab(wrongAnswerPrefab);
         allAnswers.Add(wrongAnswerClone);
         Answer wrongAnswer = wrongAnswerClone.GetComponent<Answer>();
         wrongAnswer.GenerateWrongAnswer(numberRange * 2, resultNumber);
+    }
+
+    private GameObject GeneratePrefab(GameObject answer)
+    {
+        int randomPosX = Random.Range(-boardGameSizeX, boardGameSizeX + 1);
+        int randomPosZ = Random.Range(-boardGameSizeY, boardGameSizeY + 1);
+        return Instantiate(answer, new Vector3(randomPosX, 0.0f, randomPosZ), Quaternion.identity);
     }
 
     private void SpawnAnswers()
