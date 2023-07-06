@@ -63,10 +63,7 @@ public class SnakeHeadMovement : MonoBehaviour
                 currentBodyPart = snakeParent.GetChild(i);
                 previousBodyPart = snakeParent.GetChild(i - 1);
 
-                //bodyPartsDistance = Vector3.Distance(previousBodyPart.position, currentBodyPart.position);
                 Vector3 newPosForBody = previousBodyPart.position;
-
-                //float timeValue = (Time.deltaTime * bodyPartsDistance) / (minDistance * currentMovement);
 
                 currentBodyPart.position = Vector3.Slerp(currentBodyPart.position, newPosForBody, Time.deltaTime * currentMovement);
                 currentBodyPart.rotation = Quaternion.Slerp(currentBodyPart.rotation, previousBodyPart.rotation, Time.deltaTime * currentMovement);
