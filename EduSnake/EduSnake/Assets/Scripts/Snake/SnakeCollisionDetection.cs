@@ -32,6 +32,7 @@ public class SnakeCollisionDetection : MonoBehaviour
             Vector3 lastSnakePartPosition = new Vector3(lastSnakePart.position.x, lastSnakePart.position.y, lastSnakePart.position.z);
             Instantiate(snakeBodyPrefab, lastSnakePartPosition, Quaternion.identity, snakeParent);
             mathTaskGenerator.ShowPlayerCorrectChoose();
+            GameManager.InstanceGM.AssignSnakePoints();
         }
 
         if (collision.gameObject.layer == 10)
@@ -44,7 +45,7 @@ public class SnakeCollisionDetection : MonoBehaviour
     {
         if (IsInLayerMask(other.gameObject, snakeLayers))
         {
-            SceneManager.LoadScene(0);
+            GameManager.InstanceGM.StopGame();
         }
     }
 

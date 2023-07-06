@@ -20,11 +20,14 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private GameObject gameManagerCanvas;
+    [SerializeField] private GameObject levelPanel;
+    [SerializeField] private GameObject crashPanel;
     [SerializeField] private GameObject movementCanvas;
     [SerializeField] private GameObject mathTaskGeneratorCanvas;
+    [SerializeField] private GameObject gameplayControllerCanvas;
 
-    [SerializeField] private SnakeMovement snakeMovement;
+    [SerializeField] private SnakeHeadMovement snakeHeadMovement;
+    [SerializeField] private GameplayController gameplayController;
 
     [SerializeField] private int gameSizeX = 23;
     [SerializeField] private int gameSizeY = 23;
@@ -34,10 +37,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gameManagerCanvas.SetActive(true);
+        levelPanel.SetActive(true);
 
         movementCanvas.SetActive(false);
         mathTaskGeneratorCanvas.SetActive(false);
+        gameplayControllerCanvas.SetActive(false);
+        crashPanel.SetActive(false);
     }
 
     private void Update()
@@ -48,13 +53,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void RemoveSnakeLife()
+    {
+        gameplayController.RemoveLife();
+        mathTaskGeneratorCanvas.SetActive(false);
+        movementCanvas.SetActive(false);
+        crashPanel.SetActive(true);
+    }
+
     public void StartLevelButton()
     {
-        gameManagerCanvas.SetActive(false);
+        levelPanel.SetActive(false);
 
         movementCanvas.SetActive(true);
         mathTaskGeneratorCanvas.SetActive(true);
+        gameplayControllerCanvas.SetActive(true);
 
-        snakeMovement.StartGame();
+        snakeHeadMovement.StartMovingSnakeHead();
+    }
+
+    public void StopGame()
+    {
+        RemoveSnakeLife();
+        snakeHeadMovement.StopMovingSnakeHead();
+    }
+
+    public void AssignSnakePoints()
+    {
+        gameplayController.AssignPoints();
     }
 }

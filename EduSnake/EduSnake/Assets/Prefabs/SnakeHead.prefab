@@ -249,6 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalJoystick: {fileID: 0}
+  snakeHeadRigidbody: {fileID: 7171988435522601385}
 --- !u!114 &7396177411803869301
 MonoBehaviour:
   m_ObjectHideFlags: 0

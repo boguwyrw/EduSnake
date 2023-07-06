@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnakeHeadMovement : SnakeMovement
+public class SnakeHeadMovement : MonoBehaviour
 {
     [SerializeField] private Joystick horizontalJoystick;
-
+    [SerializeField] private Rigidbody snakeHeadRigidbody;
 
     private Transform snakeParent;
     private Transform currentBodyPart;
@@ -16,16 +16,30 @@ public class SnakeHeadMovement : SnakeMovement
     private float bodyPartsDistance = 0.0f;
     private float minDistance = 0.3f;
 
+    private float slowMovement = 2.0f;
+    private float normalMovement = 4.0f;
+    private float fastMovement = 6.0f;
+    private float currentMovement = 0.0f;
+
     private void Start()
     {
         snakeParent = transform.parent;
     }
 
     private void Update()
-    {      
-        SnakePartsMovement();
+    {
         RotateSnakeHead();
         BodyPartsMovement();
+    }
+
+    private void FixedUpdate()
+    {
+        SnakeHeadMove(); 
+    }
+
+    private void SnakeHeadMove()
+    {
+        transform.Translate(Vector3.forward * Time.deltaTime * currentMovement);
     }
 
     private void RotateSnakeHead()
@@ -37,7 +51,7 @@ public class SnakeHeadMovement : SnakeMovement
 
     private void BodyPartsMovement()
     {
-        if (snakeParent.childCount > 1)
+        if (snakeParent.childCount > 1 && currentMovement > 0.0f)
         {
             for (int i = 1; i < snakeParent.childCount; i++)
             {
@@ -53,5 +67,15 @@ public class SnakeHeadMovement : SnakeMovement
                 currentBodyPart.rotation = Quaternion.Slerp(currentBodyPart.rotation, previousBodyPart.rotation, timeValue);
             }
         }
+    }
+
+    public void StartMovingSnakeHead()
+    {
+        currentMovement = slowMovement;
+    }
+
+    public void StopMovingSnakeHead()
+    {
+        currentMovement = 0.0f;
     }
 }
