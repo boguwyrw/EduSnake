@@ -42,6 +42,14 @@ public class GameplayController : MonoBehaviour
     public void AssignPoints()
     {
         points += 1;
+        if (points == 5)
+        {
+            GameManager.InstanceGM.SetNormalSpeed();
+        }
+        else if (points == 10)
+        {
+            GameManager.InstanceGM.SetFastSpeed();
+        }
         ShowPoints();
     }
 

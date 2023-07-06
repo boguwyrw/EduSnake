@@ -6,6 +6,7 @@ public class SnakeMovementManager : MonoBehaviour
 {
     [SerializeField] private float distanceBetween = 0.25f;
     [SerializeField] private GameObject bodyPrefab;
+    [SerializeField] private Joystick joystick;
 
     private float snakSpeed = 200.0f;
     private float rotationSpeed = 200.0f;
@@ -24,7 +25,15 @@ public class SnakeMovementManager : MonoBehaviour
 
     private void Update()
     {
-        rotationValue = Input.GetAxis("Horizontal");
+        //rotationValue = Input.GetAxis("Horizontal");
+
+        /*
+        Vector3 relativePos = target.position - transform.position;
+
+        // the second argument, upwards, defaults to Vector3.up
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        transform.rotation = rotation;
+        */
     }
 
     private void FixedUpdate()
@@ -35,8 +44,10 @@ public class SnakeMovementManager : MonoBehaviour
 
     private void SnakeMove()
     {
-        snakeRig.velocity = snakeBodyParts[0].transform.forward * Time.deltaTime * snakSpeed;
-        snakeBodyParts[0].transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime * rotationValue);
+        //snakeRig.velocity = snakeBodyParts[0].transform.forward * Time.deltaTime * snakSpeed;
+        snakeRig.velocity = new Vector3(joystick.Horizontal * Time.deltaTime * snakSpeed, snakeRig.velocity.y, joystick.Vertical * Time.deltaTime * snakSpeed);
+        //snakeBodyParts[0].transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime * rotationValue);
+        snakeBodyParts[0].transform.rotation = Quaternion.LookRotation(snakeRig.velocity);
 
         SnakeBodyMove();
     }

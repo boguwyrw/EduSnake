@@ -82,4 +82,14 @@ public class GameManager : MonoBehaviour
     {
         gameplayController.AssignPoints();
     }
+
+    public void SetNormalSpeed()
+    {
+        snakeHeadMovement.AssignNormalSpeed();
+    }
+
+    public void SetFastSpeed()
+    {
+        snakeHeadMovement.AssignFastSpeed();
+    }
 }
