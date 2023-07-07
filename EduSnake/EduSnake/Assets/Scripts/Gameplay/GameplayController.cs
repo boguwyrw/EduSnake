@@ -11,6 +11,7 @@ public class GameplayController : MonoBehaviour
 
     private int lives = 5;
     private int points = 0;
+    public int Points { get { return points; } }
 
     private bool isSnakeAlive = true;
     public bool IsSnakeAlive { get { return isSnakeAlive; } }
@@ -67,7 +68,7 @@ public class GameplayController : MonoBehaviour
         if (lives == 0)
         {
             isSnakeAlive = false;
-            GameManager.InstanceGM.GameOver();
+            GameManager.InstanceGM.LoseGameOver();
         }
     }
 }

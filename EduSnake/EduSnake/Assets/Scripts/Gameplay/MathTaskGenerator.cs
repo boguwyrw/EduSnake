@@ -13,11 +13,13 @@ public class MathTaskGenerator : MonoBehaviour
     [SerializeField] private GameObject correctAnswerPrefab;
     [SerializeField] private GameObject wrongAnswerPrefab;
 
+    [SerializeField] private int maxTasksNumber = 30;
+
+    private int taskNumber = 1;
     private int firstNumber = 0;
     private int secondNumber = 0;
     private int resultNumber = 0;
     private int numberRange = 101;
-    private int taskNumber = 1;
     private int boardGameSizeX = 0;
     private int boardGameSizeY = 0;
 
@@ -77,7 +79,11 @@ public class MathTaskGenerator : MonoBehaviour
         {
             SpawnWrongAnswer();
         }
-        taskNumber++;
+
+        if (taskNumber < maxTasksNumber)
+        {
+            taskNumber++;
+        }
     }
 
     private void RemoveAllAnswers()
@@ -99,7 +105,14 @@ public class MathTaskGenerator : MonoBehaviour
         resultText.color = Color.green;
         resultText.text = resultNumber.ToString();
         RemoveAllAnswers();
-        StartCoroutine(SpawnAnswersDelay());
+        if (taskNumber == maxTasksNumber)
+        {
+            GameManager.InstanceGM.WinGameOver();
+        }
+        if (taskNumber < maxTasksNumber)
+        {
+            StartCoroutine(SpawnAnswersDelay());
+        }
     }
 
     public void ShowPlayerWrongChoose()
