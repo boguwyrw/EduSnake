@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    // TO DO
+    // 1. Zliczanie wykonywanych zadañ i podsumowanie po osi¹gniêciu maksymalnego zadania
+    // 2. System zapisu
+
     #region GameManager Instance
     public static GameManager InstanceGM { get; private set; }
 

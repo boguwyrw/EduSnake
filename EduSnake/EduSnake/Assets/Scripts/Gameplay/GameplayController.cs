@@ -7,6 +7,7 @@ public class GameplayController : MonoBehaviour
 {
     [SerializeField] private TMP_Text livesText;
     [SerializeField] private TMP_Text pointsText;
+    [SerializeField] private int[] increaseSpeed = new int[2];
 
     private int lives = 5;
     private int points = 0;
@@ -45,11 +46,11 @@ public class GameplayController : MonoBehaviour
     public void AssignPoints()
     {
         points += 1;
-        if (points == 5)
+        if (points == increaseSpeed[0])
         {
             GameManager.InstanceGM.SetNormalSpeed();
         }
-        else if (points == 10)
+        else if (points == increaseSpeed[1])
         {
             GameManager.InstanceGM.SetFastSpeed();
         }
