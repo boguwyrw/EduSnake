@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // TO DO
-    // 1. System zapisu
+    // 1. Poolling dla snake body parts
+    // 2. Poolling dla answers
+    // 3. System zapisu
 
     #region GameManager Instance
     public static GameManager InstanceGM { get; private set; }

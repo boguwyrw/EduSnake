@@ -91,6 +91,7 @@ public class MathTaskGenerator : MonoBehaviour
         for (int i = 0; i < allAnswers.Count; i++)
         {
             Destroy(allAnswers[i]);
+            // przy pool zrobiæ gameObject.SetActive(false);
         }
     }
 
@@ -105,13 +106,13 @@ public class MathTaskGenerator : MonoBehaviour
         resultText.color = Color.green;
         resultText.text = resultNumber.ToString();
         RemoveAllAnswers();
-        if (taskNumber == maxTasksNumber)
-        {
-            GameManager.InstanceGM.WinGameOver();
-        }
         if (taskNumber < maxTasksNumber)
         {
             StartCoroutine(SpawnAnswersDelay());
+        }
+        else if (taskNumber == maxTasksNumber)
+        {
+            GameManager.InstanceGM.WinGameOver();
         }
     }
 
@@ -120,6 +121,13 @@ public class MathTaskGenerator : MonoBehaviour
         resultText.color = Color.red;
         resultText.text = "NO";
         RemoveAllAnswers();
-        StartCoroutine(SpawnAnswersDelay());
+        if (taskNumber < maxTasksNumber)
+        {
+            StartCoroutine(SpawnAnswersDelay());
+        }
+        else if (taskNumber == maxTasksNumber)
+        {
+            GameManager.InstanceGM.WinGameOver();
+        }
     }
 }

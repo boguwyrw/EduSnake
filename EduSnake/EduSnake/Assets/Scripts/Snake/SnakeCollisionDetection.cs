@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ public class SnakeCollisionDetection : MonoBehaviour
     [SerializeField] private MathTaskGenerator mathTaskGenerator;
 
     private Transform snakeParent;
+
+    private List<GameObject> snakePool = new List<GameObject>();
+    private int poolIndex = 0;
 
     private void Start()
     {
@@ -24,10 +28,26 @@ public class SnakeCollisionDetection : MonoBehaviour
     {
         if (collision.gameObject.layer == 9)
         {
-            int lastSnakePartIndex = snakeParent.childCount - 1;
-            Transform lastSnakePart = snakeParent.GetChild(lastSnakePartIndex).GetChild(0);
-            Vector3 lastSnakePartPosition = new Vector3(lastSnakePart.position.x, lastSnakePart.position.y, lastSnakePart.position.z);
-            Instantiate(snakeBodyPrefab, lastSnakePartPosition, Quaternion.identity, snakeParent);
+            if (snakePool.Count > 0 && snakePool.All(s => !s.activeSelf))
+            {
+                poolIndex = 0;
+            }
+
+            if (snakePool.Count > 0 && snakePool.Any(s => !s.activeSelf))
+            {
+                snakePool[poolIndex].SetActive(true);
+                poolIndex++;
+            }
+            else
+            {
+                poolIndex = 0;
+                int lastSnakePartIndex = snakeParent.childCount - 1;
+                Transform lastSnakePart = snakeParent.GetChild(lastSnakePartIndex).GetChild(0);
+                Vector3 lastSnakePartPosition = new Vector3(lastSnakePart.position.x, lastSnakePart.position.y, lastSnakePart.position.z);
+                GameObject snakeBodyClone = Instantiate(snakeBodyPrefab, lastSnakePartPosition, Quaternion.identity, snakeParent);
+                snakePool.Add(snakeBodyClone);
+            }
+
             mathTaskGenerator.ShowPlayerCorrectChoose();
             GameManager.InstanceGM.AssignSnakePoints();
         }
@@ -52,7 +72,7 @@ public class SnakeCollisionDetection : MonoBehaviour
         return (layerMask.value & (1 << obj.layer)) > 0;
     }
 
-    private void RemoveSnakeBodyParts()
+    public void RemoveSnakeBodyParts()
     {
         for (int i = 1; i < snakeParent.childCount; i++)
         {
