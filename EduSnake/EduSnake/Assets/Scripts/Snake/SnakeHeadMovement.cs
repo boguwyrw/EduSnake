@@ -14,9 +14,6 @@ public class SnakeHeadMovement : MonoBehaviour
     private Vector3 snakeDirection;
 
     private float rotationSpeed = 450.0f;
-    private float clampValue = 1.1f;
-    //private float bodyPartsDistance = 0.0f;
-    //private float minDistance = 0.15f;
 
     private float slowMovement = 3.0f;
     private float normalMovement = 6.0f;
@@ -51,7 +48,10 @@ public class SnakeHeadMovement : MonoBehaviour
 
     private void RotateSnakeHead()
     {
-        transform.rotation = Quaternion.LookRotation(snakeDirection * Time.deltaTime * rotationSpeed);
+        if (snakeDirection != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(snakeDirection * Time.deltaTime * rotationSpeed);
+        }
     }
 
     private void BodyPartsMovement()
@@ -79,6 +79,7 @@ public class SnakeHeadMovement : MonoBehaviour
     public void StopMovingSnakeHead()
     {
         currentMovement = 0.0f;
+        rotationSpeed = 0.0f;
     }
 
     public void AssignNormalSpeed()
