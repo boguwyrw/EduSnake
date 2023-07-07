@@ -64,24 +64,23 @@ public class MathTaskGenerator : MonoBehaviour
 
     private void SpawnAnswers()
     {
-        taskNumberText.text = "Task: " + taskNumber.ToString();
-        firstNumber = Random.Range(1, numberRange);
-        firstNumberText.text = firstNumber.ToString();
-        secondNumber = Random.Range(1, numberRange);
-        secondNumberText.text = secondNumber.ToString();
-        resultNumber = firstNumber + secondNumber;
-        resultText.color = Color.white;
-        resultText.text = "???";
-
-        SpawnCorrectAnswer();
-
-        for (int i = 0; i < taskNumber; i++)
-        {
-            SpawnWrongAnswer();
-        }
-
         if (taskNumber < maxTasksNumber)
         {
+            taskNumberText.text = "Task: " + taskNumber.ToString();
+            firstNumber = Random.Range(1, numberRange);
+            firstNumberText.text = firstNumber.ToString();
+            secondNumber = Random.Range(1, numberRange);
+            secondNumberText.text = secondNumber.ToString();
+            resultNumber = firstNumber + secondNumber;
+            resultText.color = Color.white;
+            resultText.text = "???";
+
+            SpawnCorrectAnswer();
+
+            for (int i = 0; i < taskNumber; i++)
+            {
+                SpawnWrongAnswer();
+            }
             taskNumber++;
         }
     }
