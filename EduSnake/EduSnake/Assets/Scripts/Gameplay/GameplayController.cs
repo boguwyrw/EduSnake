@@ -11,6 +11,9 @@ public class GameplayController : MonoBehaviour
     private int lives = 5;
     private int points = 0;
 
+    private bool isSnakeAlive = true;
+    public bool IsSnakeAlive { get { return isSnakeAlive; } }
+
     private void Start()
     {
         ShowLives();
@@ -55,7 +58,15 @@ public class GameplayController : MonoBehaviour
 
     public void RemoveLife()
     {
-        lives -= 1;
+        if (lives > 0)
+        {
+            lives -= 1;
+        }
         ShowLives();
+        if (lives == 0)
+        {
+            isSnakeAlive = false;
+            GameManager.InstanceGM.GameOver();
+        }
     }
 }

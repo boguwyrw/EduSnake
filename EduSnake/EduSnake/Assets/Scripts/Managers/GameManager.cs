@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,12 +26,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject movementCanvas;
     [SerializeField] private GameObject mathTaskGeneratorCanvas;
     [SerializeField] private GameObject gameplayControllerCanvas;
+    [SerializeField] private GameObject gameOverCanvas;
 
     [SerializeField] private SnakeHeadMovement snakeHeadMovement;
     [SerializeField] private GameplayController gameplayController;
 
     [SerializeField] private int gameSizeX = 23;
     [SerializeField] private int gameSizeY = 23;
+
+    private float crashEffectDelayTime = 1.25f;
 
     public int GameSizeX { get { return gameSizeX; } }
     public int GameSizeY { get { return gameSizeY; } }
@@ -39,26 +43,46 @@ public class GameManager : MonoBehaviour
     {
         levelPanel.SetActive(true);
 
+        crashPanel.SetActive(false);
         movementCanvas.SetActive(false);
         mathTaskGeneratorCanvas.SetActive(false);
         gameplayControllerCanvas.SetActive(false);
-        crashPanel.SetActive(false);
+        gameOverCanvas.SetActive(false);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            QuitGameButton();
         }
     }
 
     private void RemoveSnakeLife()
     {
-        gameplayController.RemoveLife();
+        gameplayController.RemoveLife(); 
+    }
+
+    private IEnumerator ActivateCrashEffectDelay()
+    {
         mathTaskGeneratorCanvas.SetActive(false);
         movementCanvas.SetActive(false);
-        crashPanel.SetActive(true);
+        gameplayControllerCanvas.SetActive(false);
+
+        if (gameplayController.IsSnakeAlive)
+        {
+            crashPanel.SetActive(true);
+
+            yield return new WaitForSeconds(crashEffectDelayTime);
+
+            mathTaskGeneratorCanvas.SetActive(true);
+            movementCanvas.SetActive(true);
+            gameplayControllerCanvas.SetActive(true);
+
+            crashPanel.SetActive(false);
+
+            snakeHeadMovement.ResumeMovingSnakeHead();
+        }
     }
 
     public void StartLevelButton()
@@ -75,7 +99,30 @@ public class GameManager : MonoBehaviour
     public void StopGame()
     {
         RemoveSnakeLife();
+        StartCoroutine(ActivateCrashEffectDelay());
         snakeHeadMovement.StopMovingSnakeHead();
+    }
+
+    public void GameOver()
+    {
+        snakeHeadMovement.StopMovingSnakeHead();
+
+        crashPanel.SetActive(false);
+
+        gameOverCanvas.SetActive(true);
+    }
+
+    public void RestartGameButton()
+    {
+        gameOverCanvas.SetActive(false);
+
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void QuitGameButton()
+    {
+        Application.Quit();
     }
 
     public void AssignSnakePoints()

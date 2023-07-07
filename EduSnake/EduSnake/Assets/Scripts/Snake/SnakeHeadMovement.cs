@@ -11,6 +11,7 @@ public class SnakeHeadMovement : MonoBehaviour
     private Transform currentBodyPart;
     private Transform previousBodyPart;
 
+    private Vector3 headStartPosition;
     private Vector3 snakeDirection;
 
     private float rotationSpeed = 450.0f;
@@ -23,6 +24,7 @@ public class SnakeHeadMovement : MonoBehaviour
     private void Start()
     {
         snakeParent = transform.parent;
+        headStartPosition = transform.position;
     }
 
     private void Update()
@@ -34,10 +36,6 @@ public class SnakeHeadMovement : MonoBehaviour
     {
         SnakeHeadMove(); 
         BodyPartsMovement();
-    }
-
-    private void LateUpdate()
-    {
     }
 
     private void SnakeHeadMove()
@@ -80,6 +78,13 @@ public class SnakeHeadMovement : MonoBehaviour
     {
         currentMovement = 0.0f;
         rotationSpeed = 0.0f;
+    }
+
+    public void ResumeMovingSnakeHead()
+    {
+        transform.position = headStartPosition;
+        currentMovement = slowMovement;
+        rotationSpeed = 450.0f;
     }
 
     public void AssignNormalSpeed()

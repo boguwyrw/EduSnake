@@ -11,8 +11,6 @@ public class SnakeCollisionDetection : MonoBehaviour
 
     private Transform snakeParent;
 
-    //private float bodyPartsOffset = 1.0f;
-
     private void Start()
     {
         snakeParent = transform.parent;
@@ -45,6 +43,7 @@ public class SnakeCollisionDetection : MonoBehaviour
     {
         if (IsInLayerMask(other.gameObject, snakeLayers))
         {
+            RemoveSnakeBodyParts();
             GameManager.InstanceGM.StopGame();
         }
     }
@@ -52,5 +51,13 @@ public class SnakeCollisionDetection : MonoBehaviour
     private bool IsInLayerMask(GameObject obj, LayerMask layerMask)
     {
         return (layerMask.value & (1 << obj.layer)) > 0;
+    }
+
+    private void RemoveSnakeBodyParts()
+    {
+        for (int i = 1; i < snakeParent.childCount; i++)
+        {
+            snakeParent.GetChild(i).gameObject.SetActive(false);
+        }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnakeBodyMovement : MonoBehaviour
+public class SnakeBodyDetection : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
