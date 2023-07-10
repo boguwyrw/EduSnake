@@ -19,7 +19,7 @@ public class MathTaskGenerator : MonoBehaviour
     private int firstNumber = 0;
     private int secondNumber = 0;
     private int resultNumber = 0;
-    private int numberRange = 101;
+    private int numberRange = 31;
     private int boardGameSizeX = 0;
     private int boardGameSizeY = 0;
 
@@ -41,17 +41,47 @@ public class MathTaskGenerator : MonoBehaviour
 
     private void SpawnCorrectAnswer()
     {
-        GameObject correctAnswerClone = GeneratePrefab(correctAnswerPrefab);
-        allAnswers.Add(correctAnswerClone);
-        Answer correctAnswer = correctAnswerClone.GetComponent<Answer>();
+        if (allAnswers.Count > 0)
+        {
+            AssignCorrectAnswer(allAnswers[0]);
+            allAnswers[0].SetActive(true);
+        }
+        else
+        {
+            GameObject correctAnswerClone = GeneratePrefab(correctAnswerPrefab);
+            allAnswers.Add(correctAnswerClone);
+            AssignCorrectAnswer(correctAnswerClone);
+        }
+    }
+
+    private void AssignCorrectAnswer(GameObject correctAnswerGO)
+    {
+        Answer correctAnswer = correctAnswerGO.GetComponent<Answer>();
         correctAnswer.AssignAnswer(resultNumber);
     }
 
     private void SpawnWrongAnswer()
     {
-        GameObject wrongAnswerClone = GeneratePrefab(wrongAnswerPrefab);
-        allAnswers.Add(wrongAnswerClone);
-        Answer wrongAnswer = wrongAnswerClone.GetComponent<Answer>();
+        int answersCount = taskNumber + 1;
+        for (int i = 1; i < answersCount; i++)
+        {
+            if (i < allAnswers.Count)
+            {
+                AssignWrongAnswer(allAnswers[i]);
+                allAnswers[i].SetActive(true);
+            }
+            else
+            {
+                GameObject wrongAnswerClone = GeneratePrefab(wrongAnswerPrefab);
+                allAnswers.Add(wrongAnswerClone);
+                AssignWrongAnswer(wrongAnswerClone);
+            }
+        }
+    }
+
+    private void AssignWrongAnswer(GameObject wrongAnswerGO)
+    {
+        Answer wrongAnswer = wrongAnswerGO.GetComponent<Answer>();
         wrongAnswer.GenerateWrongAnswer(numberRange * 2, resultNumber);
     }
 
@@ -89,8 +119,9 @@ public class MathTaskGenerator : MonoBehaviour
     {
         for (int i = 0; i < allAnswers.Count; i++)
         {
-            Destroy(allAnswers[i]);
-            // przy pool zrobiæ gameObject.SetActive(false);
+            Answer answer = allAnswers[i].GetComponent<Answer>();
+            answer.RePosition();
+            allAnswers[i].SetActive(false);
         }
     }
 
@@ -127,6 +158,14 @@ public class MathTaskGenerator : MonoBehaviour
         else if (taskNumber == maxTasksNumber)
         {
             GameManager.InstanceGM.WinGameOver();
+        }
+    }
+
+    public void ShowAllAnswers()
+    {
+        for (int i = 0; i < allAnswers.Count; i++)
+        {
+            allAnswers[i].SetActive(true);
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SnakeCollisionDetection : MonoBehaviour
 {
@@ -14,9 +15,13 @@ public class SnakeCollisionDetection : MonoBehaviour
     private List<GameObject> snakePool = new List<GameObject>();
     private int poolIndex = 0;
 
+    public delegate void OnBodyCollisionDetection();
+    public static OnBodyCollisionDetection onBodyCollisionDetection;
+
     private void Start()
     {
         snakeParent = transform.parent;
+        onBodyCollisionDetection = RemoveSnakeBodyParts;
     }
 
     private void Update()
@@ -64,7 +69,6 @@ public class SnakeCollisionDetection : MonoBehaviour
         {
             RemoveSnakeBodyParts();
             GameManager.InstanceGM.StopGame();
-            Debug.Log("Head collision: " + other.gameObject.name);
         }
     }
 
@@ -73,11 +77,23 @@ public class SnakeCollisionDetection : MonoBehaviour
         return (layerMask.value & (1 << obj.layer)) > 0;
     }
 
-    public void RemoveSnakeBodyParts()
+    private void RemoveSnakeBodyParts()
     {
+        if (snakeParent == null)
+        {
+            snakeParent = transform.parent;
+        }
+       
         for (int i = 1; i < snakeParent.childCount; i++)
         {
             snakeParent.GetChild(i).gameObject.SetActive(false);
         }
+
+        for (int j = 0; j < snakePool.Count; j++)
+        {
+            snakePool[j].SetActive(false);
+        }
+
+        GameManager.InstanceGM.StopGame();
     }
 }

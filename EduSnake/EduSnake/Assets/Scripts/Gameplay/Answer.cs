@@ -33,7 +33,7 @@ public class Answer : MonoBehaviour
         answerText.text = wrongAnswer.ToString();
     }
 
-    private void RePosition()
+    public void RePosition()
     {
         int randomPosX = Random.Range(-boardGameSizeX, boardGameSizeX + 1);
         int randomPosZ = Random.Range(-boardGameSizeY, boardGameSizeY + 1);

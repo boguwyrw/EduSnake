@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SnakeHeadMovement snakeHeadMovement;
     [SerializeField] private GameplayController gameplayController;
     [SerializeField] private GameOverManager gameOverManager;
+    [SerializeField] private MathTaskGenerator mathTaskGenerator;
 
     [SerializeField] private int gameSizeX = 23;
     [SerializeField] private int gameSizeY = 23;
@@ -67,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     private void RemoveSnakeLife()
     {
-        gameplayController.RemoveLife(); 
+        gameplayController.RemoveLife();
     }
 
     private IEnumerator ActivateCrashEffectDelay()
@@ -88,6 +89,7 @@ public class GameManager : MonoBehaviour
 
             crashPanel.SetActive(false);
 
+            mathTaskGenerator.ShowAllAnswers();
             snakeHeadMovement.ResumeMovingSnakeHead();
         }
     }
