@@ -48,8 +48,8 @@ public class SnakeCollisionDetection : MonoBehaviour
                 snakePool.Add(snakeBodyClone);
             }
 
-            mathTaskGenerator.ShowPlayerCorrectChoose();
             GameManager.InstanceGM.AssignSnakePoints();
+            mathTaskGenerator.ShowPlayerCorrectChoose();
         }
 
         if (collision.gameObject.layer == 10)
@@ -64,6 +64,7 @@ public class SnakeCollisionDetection : MonoBehaviour
         {
             RemoveSnakeBodyParts();
             GameManager.InstanceGM.StopGame();
+            Debug.Log("Head collision: " + other.gameObject.name);
         }
     }
 

@@ -64,7 +64,9 @@ public class GameplayController : MonoBehaviour
         {
             lives -= 1;
         }
+
         ShowLives();
+
         if (lives == 0)
         {
             isSnakeAlive = false;

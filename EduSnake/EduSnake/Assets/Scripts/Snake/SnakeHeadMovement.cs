@@ -30,13 +30,9 @@ public class SnakeHeadMovement : MonoBehaviour
 
     private void Update()
     {
-        RotateSnakeHead();
-    }
-
-    private void FixedUpdate()
-    {
-        SnakeHeadMove(); 
+        SnakeHeadMove();
         BodyPartsMovement();
+        RotateSnakeHead();
     }
 
     private void SnakeHeadMove()
@@ -47,7 +43,7 @@ public class SnakeHeadMovement : MonoBehaviour
 
     private void RotateSnakeHead()
     {
-        if (snakeDirection != Vector3.zero)
+        if (snakeDirection != Vector3.zero && rotationSpeed != 0.0f)
         {
             transform.rotation = Quaternion.LookRotation(snakeDirection * Time.deltaTime * rotationSpeed);
         }

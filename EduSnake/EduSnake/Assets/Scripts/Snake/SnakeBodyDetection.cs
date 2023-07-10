@@ -16,6 +16,7 @@ public class SnakeBodyDetection : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             collisionDetection.RemoveSnakeBodyParts();
+            Debug.Log("Body collision: " + collision.gameObject.name);
             GameManager.InstanceGM.StopGame();
         }
     }

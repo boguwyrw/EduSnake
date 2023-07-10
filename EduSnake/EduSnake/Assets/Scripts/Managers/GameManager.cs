@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // TO DO
-    // 1. Poolling dla snake body parts
-    // 2. Poolling dla answers
-    // 3. System zapisu
+    // 1. Poolling dla answers
+    // 2. System zapisu
 
     #region GameManager Instance
     public static GameManager InstanceGM { get; private set; }
@@ -106,9 +105,10 @@ public class GameManager : MonoBehaviour
 
     public void StopGame()
     {
+        snakeHeadMovement.StopMovingSnakeHead();
+
         RemoveSnakeLife();
         StartCoroutine(ActivateCrashEffectDelay());
-        snakeHeadMovement.StopMovingSnakeHead();
     }
 
     public void LoseGameOver()
