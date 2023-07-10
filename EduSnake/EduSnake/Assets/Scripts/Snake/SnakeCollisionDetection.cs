@@ -68,7 +68,6 @@ public class SnakeCollisionDetection : MonoBehaviour
         if (IsInLayerMask(other.gameObject, snakeLayers))
         {
             RemoveSnakeBodyParts();
-            GameManager.InstanceGM.StopGame();
         }
     }
 
