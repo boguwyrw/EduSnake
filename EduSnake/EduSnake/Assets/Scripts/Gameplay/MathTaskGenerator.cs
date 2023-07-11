@@ -150,6 +150,7 @@ public class MathTaskGenerator : MonoBehaviour
     {
         resultText.color = Color.red;
         resultText.text = "NO";
+        GameManager.InstanceGM.RemoveSnakeLife();
         RemoveAllAnswers();
         if (taskNumber < maxTasksNumber)
         {
