@@ -152,6 +152,8 @@ public class GameManager : MonoBehaviour
         snakeHeadMovement.StopMovingSnakeHead();
 
         crashPanel.SetActive(false);
+        joystickGO.SetActive(false);
+        mathTaskGeneratorCanvas.SetActive(false);
 
         loseGameOverPanel.SetActive(true);
     }
