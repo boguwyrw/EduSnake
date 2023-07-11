@@ -14,13 +14,10 @@ public class SnakeCollisionDetection : MonoBehaviour
     private List<GameObject> snakePool = new List<GameObject>();
     private int poolIndex = 0;
 
-    public delegate void OnBodyCollisionDetection();
-    public static OnBodyCollisionDetection onBodyCollisionDetection;
-
     private void Start()
     {
         snakeParent = transform.parent;
-        onBodyCollisionDetection = RemoveSnakeBodyParts;
+  
     }
 
     private void Update()
@@ -50,6 +47,7 @@ public class SnakeCollisionDetection : MonoBehaviour
                 Vector3 lastSnakePartPosition = new Vector3(lastSnakePart.position.x, lastSnakePart.position.y, lastSnakePart.position.z);
                 GameObject snakeBodyClone = Instantiate(snakeBodyPrefab, lastSnakePartPosition, Quaternion.identity, snakeParent);
                 snakePool.Add(snakeBodyClone);
+                snakeBodyClone.GetComponent<SnakeBodyDetection>().BodyColided += RemoveSnakeBodyParts;
             }
 
             GameManager.InstanceGM.AssignSnakePoints();
@@ -61,6 +59,7 @@ public class SnakeCollisionDetection : MonoBehaviour
             mathTaskGenerator.ShowPlayerWrongChoose();
         }
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
