@@ -15,7 +15,7 @@ public class MathTaskGenerator : MonoBehaviour
 
     [SerializeField] private int maxTasksNumber = 30;
 
-    private int taskNumber = 1;
+    private int taskNumber = 0;
     private int firstNumber = 0;
     private int secondNumber = 0;
     private int resultNumber = 0;
@@ -92,10 +92,28 @@ public class MathTaskGenerator : MonoBehaviour
         return Instantiate(answer, new Vector3(randomPosX, 0.0f, randomPosZ), Quaternion.identity);
     }
 
-    private void SpawnAnswers()
+    private void RemoveAllAnswers()
+    {
+        for (int i = 0; i < allAnswers.Count; i++)
+        {
+            Answer answer = allAnswers[i].GetComponent<Answer>();
+            answer.RePosition();
+            allAnswers[i].SetActive(false);
+        }
+    }
+
+    private IEnumerator SpawnAnswersDelay()
+    {
+        yield return new WaitForSeconds(spawnAnswersDelayTime);
+        SpawnAnswers();
+    }
+
+    public void SpawnAnswers()
     {
         if (taskNumber < maxTasksNumber)
         {
+            taskNumber++;
+
             taskNumberText.text = "Task: " + taskNumber.ToString();
             firstNumber = Random.Range(1, numberRange);
             firstNumberText.text = firstNumber.ToString();
@@ -111,24 +129,7 @@ public class MathTaskGenerator : MonoBehaviour
             {
                 SpawnWrongAnswer();
             }
-            taskNumber++;
         }
-    }
-
-    private void RemoveAllAnswers()
-    {
-        for (int i = 0; i < allAnswers.Count; i++)
-        {
-            Answer answer = allAnswers[i].GetComponent<Answer>();
-            answer.RePosition();
-            allAnswers[i].SetActive(false);
-        }
-    }
-
-    private IEnumerator SpawnAnswersDelay()
-    {
-        yield return new WaitForSeconds(spawnAnswersDelayTime);
-        SpawnAnswers();
     }
 
     public void ShowPlayerCorrectChoose()

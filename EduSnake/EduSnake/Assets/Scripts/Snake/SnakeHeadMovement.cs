@@ -14,7 +14,8 @@ public class SnakeHeadMovement : MonoBehaviour
     private Vector3 headStartPosition;
     private Vector3 snakeDirection;
 
-    private float rotationSpeed = 450.0f;
+    private float rotationSpeed = 0.0f;
+    private float maxRotationSpeed = 450.0f;
 
     private float slowMovement = 3.0f;
     private float normalMovement = 6.0f;
@@ -26,17 +27,18 @@ public class SnakeHeadMovement : MonoBehaviour
     {
         snakeParent = transform.parent;
         headStartPosition = transform.position;
+        rotationSpeed = maxRotationSpeed;
     }
 
     private void Update()
     {
-        SnakeHeadMove();
         RotateSnakeHead();
         BodyPartsMovement();
     }
 
     private void LateUpdate()
     {
+        SnakeHeadMove();
     }
 
     private void SnakeHeadMove()
@@ -85,8 +87,8 @@ public class SnakeHeadMovement : MonoBehaviour
     public void ResumeMovingSnakeHead()
     {
         transform.position = headStartPosition;
-        currentMovement = lastMovementSpeed;
-        rotationSpeed = 450.0f;
+        currentMovement = slowMovement;
+        rotationSpeed = maxRotationSpeed;
     }
 
     public void AssignNormalSpeed()

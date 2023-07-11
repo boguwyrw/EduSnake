@@ -111,6 +111,8 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForSeconds(crashEffectDelayTime);
 
+            mathTaskGenerator.SpawnAnswers();
+
             mathTaskGeneratorCanvas.SetActive(true);
             joystickGO.SetActive(true);
             gameplayControllerCanvas.SetActive(true);
@@ -201,6 +203,7 @@ public class GameManager : MonoBehaviour
     public void AssignSnakePoints()
     {
         gameplayController.AssignPoints();
+        mathTaskGenerator.ShowPlayerCorrectChoose();
     }
 
     public void SetNormalSpeed()

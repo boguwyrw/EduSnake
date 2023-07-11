@@ -51,7 +51,7 @@ public class SnakeCollisionDetection : MonoBehaviour
             }
 
             GameManager.InstanceGM.AssignSnakePoints();
-            mathTaskGenerator.ShowPlayerCorrectChoose();
+            //mathTaskGenerator.ShowPlayerCorrectChoose();
         }
 
         if (collision.gameObject.layer == 10)

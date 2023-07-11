@@ -23,7 +23,7 @@ public class Answer : MonoBehaviour
 
     public void GenerateWrongAnswer(int numberRange, int correctAnswer)
     {
-        int wrongAnswer = 0;
+        int wrongAnswer = -1;
         do
         {
             wrongAnswer = Random.Range(1, numberRange);
