@@ -170,6 +170,11 @@ public class GameManager : MonoBehaviour
         gameOverManager.AssignFinalScore(gameplayController.Points);
     }
 
+    public void ActivateParticleEffect(Vector3 particlePosition)
+    {
+        snakeParticleEffects.ActivateCorrectParticleEffect(particlePosition);
+    }
+
     public void RestartGameButton()
     {
         loseGameOverPanel.SetActive(false);

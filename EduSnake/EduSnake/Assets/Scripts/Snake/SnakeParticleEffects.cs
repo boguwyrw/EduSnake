@@ -5,6 +5,7 @@ using UnityEngine;
 public class SnakeParticleEffects : MonoBehaviour
 {
     [SerializeField] private ParticleSystem wrongAnswerEffect;
+    [SerializeField] private ParticleSystem correctAnswerEffect;
 
     private void Start()
     {
@@ -14,15 +15,22 @@ public class SnakeParticleEffects : MonoBehaviour
     public void ActivateWrongParticleEffect()
     {
         wrongAnswerEffect.gameObject.SetActive(true);
+        wrongAnswerEffect.Play();
         if (wrongAnswerEffect.isStopped)
         {
             wrongAnswerEffect.gameObject.SetActive(false);
         }
     }
 
-    public void DeactivateWrongParticleEffect()
+    public void ActivateCorrectParticleEffect(Vector3 answerPosition)
     {
-        wrongAnswerEffect.gameObject.SetActive(false);
+        correctAnswerEffect.gameObject.transform.position = answerPosition;
+        correctAnswerEffect.gameObject.SetActive(true);
+        correctAnswerEffect.Play();
+        if (correctAnswerEffect.isStopped)
+        {
+            correctAnswerEffect.gameObject.SetActive(false);
+        }
     }
 
     public bool GetWrongParticleEffectStopped()

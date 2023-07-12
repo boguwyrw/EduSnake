@@ -23,6 +23,9 @@ public class SnakeCollisionDetection : MonoBehaviour
     {
         if (collision.gameObject.layer == 9)
         {
+            Vector3 collisionPosition = collision.gameObject.transform.position;
+            GameManager.InstanceGM.ActivateParticleEffect(collisionPosition);
+
             if (snakePool.Count > 0 && snakePool.All(s => !s.activeSelf))
             {
                 poolIndex = 0;
