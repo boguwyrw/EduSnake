@@ -2313,7 +2313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   livesText: {fileID: 282013836}
   pointsText: {fileID: 1217873107}
-  increaseSpeed: 0300000006000000
+  increaseSpeed: 050000000a000000
 --- !u!114 &486085464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5049,7 +5049,7 @@ MonoBehaviour:
   resultText: {fileID: 48727160}
   correctAnswerPrefab: {fileID: 5643915846916771668, guid: 8830b62464efef6478e9fa49a21e2ff9, type: 3}
   wrongAnswerPrefab: {fileID: 5874402737241517618, guid: aae50e731d585ba43bbd8e3e9d428419, type: 3}
-  maxTasksNumber: 8
+  maxTasksNumber: 20
 --- !u!1 &1127190439
 GameObject:
   m_ObjectHideFlags: 0
