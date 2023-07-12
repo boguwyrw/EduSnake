@@ -8,8 +8,8 @@ using System;
 public class GameManager : MonoBehaviour
 {
     // TO DO
-    // 1. Poolling dla answers
-    // 2. System zapisu
+    // 1. System zapisu
+    // 2. Efekty Do Tween
 
     #region GameManager Instance
     public static GameManager InstanceGM { get; private set; }
@@ -154,8 +154,11 @@ public class GameManager : MonoBehaviour
         crashPanel.SetActive(false);
         joystickGO.SetActive(false);
         mathTaskGeneratorCanvas.SetActive(false);
+        gameplayControllerCanvas.SetActive(false);
 
         loseGameOverPanel.SetActive(true);
+
+        gameOverManager.AssignFinalScore(gameplayController.Points);
     }
 
     public void WinGameOver()
