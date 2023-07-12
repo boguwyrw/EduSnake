@@ -32,13 +32,15 @@ public class SnakeHeadMovement : MonoBehaviour
 
     private void Update()
     {
-        RotateSnakeHead();
-        BodyPartsMovement();
+        
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         SnakeHeadMove();
+
+        RotateSnakeHead();
+        BodyPartsMovement();
     }
 
     private void SnakeHeadMove()

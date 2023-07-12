@@ -105,23 +105,17 @@ public class GameManager : MonoBehaviour
         joystickGO.SetActive(false);
         gameplayControllerCanvas.SetActive(false);
 
+        crashPanel.SetActive(true);
+
+        yield return new WaitForSeconds(crashEffectDelayTime);
+
+        LoseGameOver();
+        /*
         if (gameplayController.IsSnakeAlive)
         {
-            crashPanel.SetActive(true);
-
-            yield return new WaitForSeconds(crashEffectDelayTime);
-
-            mathTaskGenerator.SpawnAnswers();
-
-            mathTaskGeneratorCanvas.SetActive(true);
-            joystickGO.SetActive(true);
-            gameplayControllerCanvas.SetActive(true);
-
-            crashPanel.SetActive(false);
-
-            mathTaskGenerator.ShowAllAnswers();
-            snakeHeadMovement.ResumeMovingSnakeHead();
+            
         }
+        */
     }
 
     public void RemoveSnakeLife()

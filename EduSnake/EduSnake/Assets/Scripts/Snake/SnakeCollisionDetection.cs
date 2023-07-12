@@ -64,7 +64,8 @@ public class SnakeCollisionDetection : MonoBehaviour
     {
         if (IsInLayerMask(other.gameObject, snakeLayers))
         {
-            GameManager.InstanceGM.LoseGameOver();
+            GameManager.InstanceGM.StopGame();
+            //GameManager.InstanceGM.LoseGameOver();
         }
     }
 
