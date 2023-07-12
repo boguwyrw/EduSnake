@@ -13,9 +13,6 @@ public class GameplayController : MonoBehaviour
     private int points = 0;
     public int Points { get { return points; } }
 
-    //private bool isSnakeAlive = true;
-    //public bool IsSnakeAlive { get { return isSnakeAlive; } }
-
     private void Start()
     {
         ShowLives();
@@ -47,6 +44,19 @@ public class GameplayController : MonoBehaviour
     public void AssignPoints()
     {
         points += 1;
+        if (PlayerPrefs.HasKey("BestScore"))
+        {
+            int currentBestScore = PlayerPrefs.GetInt("BestScore");
+            if (currentBestScore < points)
+            {
+                PlayerPrefs.SetInt("BestScore", points);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("BestScore", points);
+        }
+
         if (points == increaseSpeed[0])
         {
             GameManager.InstanceGM.SetNormalSpeed();
@@ -69,7 +79,6 @@ public class GameplayController : MonoBehaviour
 
         if (lives == 0)
         {
-            //isSnakeAlive = false;
             GameManager.InstanceGM.LoseGameOver();
         }
     }

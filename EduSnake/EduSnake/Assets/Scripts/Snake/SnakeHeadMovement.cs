@@ -21,7 +21,7 @@ public class SnakeHeadMovement : MonoBehaviour
     private float normalMovement = 6.0f;
     private float fastMovement = 9.0f;
     private float currentMovement = 0.0f;
-    private float lastMovementSpeed = 0.0f;
+    //private float lastMovementSpeed = 0.0f;
 
     private void Start()
     {
@@ -81,7 +81,7 @@ public class SnakeHeadMovement : MonoBehaviour
 
     public void StopMovingSnakeHead()
     {
-        lastMovementSpeed = currentMovement;
+        //lastMovementSpeed = currentMovement;
         currentMovement = 0.0f;
         rotationSpeed = 0.0f;
     }

@@ -17,12 +17,6 @@ public class SnakeCollisionDetection : MonoBehaviour
     private void Start()
     {
         snakeParent = transform.parent;
-  
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -65,7 +59,6 @@ public class SnakeCollisionDetection : MonoBehaviour
         if (IsInLayerMask(other.gameObject, snakeLayers))
         {
             GameManager.InstanceGM.StopGame();
-            //GameManager.InstanceGM.LoseGameOver();
         }
     }
 
@@ -90,7 +83,5 @@ public class SnakeCollisionDetection : MonoBehaviour
         {
             snakePool[j].SetActive(false);
         }
-
-        //GameManager.InstanceGM.StopGame();
     }
 }

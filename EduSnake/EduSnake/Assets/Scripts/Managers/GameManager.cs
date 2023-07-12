@@ -76,6 +76,11 @@ public class GameManager : MonoBehaviour
         {
             QuitGameButton();
         }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 
     private void TogglesListeners()
@@ -110,12 +115,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(crashEffectDelayTime);
 
         LoseGameOver();
-        /*
-        if (gameplayController.IsSnakeAlive)
-        {
-            
-        }
-        */
     }
 
     public void RemoveSnakeLife()
