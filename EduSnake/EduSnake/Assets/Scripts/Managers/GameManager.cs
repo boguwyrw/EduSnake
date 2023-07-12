@@ -45,11 +45,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameOverManager gameOverManager;
     [SerializeField] private MathTaskGenerator mathTaskGenerator;
     [SerializeField] private MovementJoystickManager movementJoystickManager;
+    [SerializeField] private SnakeParticleEffects snakeParticleEffects;
 
     [SerializeField] private int gameSizeX = 23;
     [SerializeField] private int gameSizeY = 23;
 
-    private float crashEffectDelayTime = 1.25f;
+    private float crashEffectDelayTime = 1.5f;
 
     public int GameSizeX { get { return gameSizeX; } }
     public int GameSizeY { get { return gameSizeY; } }
@@ -110,10 +111,12 @@ public class GameManager : MonoBehaviour
         joystickGO.SetActive(false);
         gameplayControllerCanvas.SetActive(false);
 
+        snakeParticleEffects.ActivateWrongParticleEffect();
+
+        yield return new WaitUntil(() => snakeParticleEffects.GetWrongParticleEffectStopped());
         crashPanel.SetActive(true);
 
         yield return new WaitForSeconds(crashEffectDelayTime);
-
         LoseGameOver();
     }
 

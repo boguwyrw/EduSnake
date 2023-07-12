@@ -1077,6 +1077,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4586f12928b3e1141ae72e4d8d269753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &272201018 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7793725923419045179, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
+  m_PrefabInstance: {fileID: 3084798244291753154}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2196ed8f6a226f946bb4e3031919fb27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &280680032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8848872821412255961, guid: 1e4f49afacfb1774db32a9b1f2e72e4a, type: 3}
@@ -9131,6 +9142,7 @@ MonoBehaviour:
   gameOverManager: {fileID: 1656716036}
   mathTaskGenerator: {fileID: 1126970068}
   movementJoystickManager: {fileID: 806072807}
+  snakeParticleEffects: {fileID: 272201018}
   gameSizeX: 28
   gameSizeY: 23
 --- !u!1 &2028471143
