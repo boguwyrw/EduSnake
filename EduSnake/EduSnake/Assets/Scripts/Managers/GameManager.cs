@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            PlayerPrefs.DeleteAll();
+            DeleteSavesButton();
         }
     }
 
@@ -212,5 +212,10 @@ public class GameManager : MonoBehaviour
     public void SetFastSpeed()
     {
         snakeHeadMovement.AssignFastSpeed();
+    }
+
+    public void DeleteSavesButton()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
