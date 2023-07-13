@@ -6,6 +6,7 @@ using TMPro;
 public class MathTaskGenerator : MonoBehaviour
 {
     [SerializeField] private TMP_Text taskNumberText;
+    [SerializeField] private TMP_Text levelNumberText;
     [SerializeField] private TMP_Text firstNumberText;
     [SerializeField] private TMP_Text secondNumberText;
     [SerializeField] private TMP_Text resultText;
@@ -31,6 +32,7 @@ public class MathTaskGenerator : MonoBehaviour
     {
         boardGameSizeX = GameManager.InstanceGM.GameSizeX;
         boardGameSizeY = GameManager.InstanceGM.GameSizeY;
+        levelNumberText.text = "Level: " + GameManager.InstanceGM.CurrentSceneIndex;
         SpawnAnswers();
     }
 
@@ -120,7 +122,7 @@ public class MathTaskGenerator : MonoBehaviour
             secondNumber = Random.Range(1, numberRange);
             secondNumberText.text = secondNumber.ToString();
             resultNumber = firstNumber + secondNumber;
-            resultText.color = Color.white;
+            resultText.color = Color.black;
             resultText.text = "???";
 
             SpawnCorrectAnswer();

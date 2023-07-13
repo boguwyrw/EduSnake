@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region Static Variables
+    public static bool IsGameRestarted = false;
+    #endregion
+
+    #region SerializeField Variables
     [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject levelPanel;
     [SerializeField] private GameObject settingsPanel;
@@ -36,8 +41,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameplayControllerCanvas;
     [SerializeField] private GameObject joystickGO;
 
-    [SerializeField] private Toggle rightToggle;
-    [SerializeField] private Toggle leftToggle;
+    //[SerializeField] private Toggle rightToggle;
+    //[SerializeField] private Toggle leftToggle;
+
+    [SerializeField] private TMP_Text levelNumberText;
 
     [SerializeField] private SnakeHeadMovement snakeHeadMovement;
     [SerializeField] private GameplayController gameplayController;
@@ -48,8 +55,17 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int gameSizeX = 23;
     [SerializeField] private int gameSizeY = 23;
+    #endregion
+
+    #region PC vs. Android Settings
+    [SerializeField] private GameObject startGameLevelTextGO;
+    [SerializeField] private GameObject startLevelButtonGO;
+    #endregion
 
     private float crashEffectDelayTime = 1.5f;
+
+    private int currentSceneIndex = -1;
+    public int CurrentSceneIndex { get { return currentSceneIndex; } }
 
     public int GameSizeX { get { return gameSizeX; } }
     public int GameSizeY { get { return gameSizeY; } }
@@ -67,22 +83,36 @@ public class GameManager : MonoBehaviour
         loseGameOverPanel.SetActive(false);
         winGameOverPanel.SetActive(false);
 
-        TogglesListeners();
+        //TogglesListeners();
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        levelNumberText.text = "Level " + currentSceneIndex.ToString();
+
+        if (IsGameRestarted)
+        {
+            IsGameRestarted = false;
+
+            TurnOnLevelPanel();
+        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            QuitGameButton();
+            MainMenuButton();
         }
-
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.C))
         {
             DeleteSavesButton();
         }
+#endif
+        if (Input.touchCount > 0 && levelPanel.activeSelf)
+        {
+            StartGameLevel();
+        }
     }
-
+    /*
     private void TogglesListeners()
     {
         rightToggle.onValueChanged.AddListener(delegate {
@@ -93,7 +123,6 @@ public class GameManager : MonoBehaviour
             LeftToggleValueChanged(leftToggle);
         });
     }
-
     private void RightToggleValueChanged(Toggle rightToggle)
     {
         movementJoystickManager.RightSideJoystick();
@@ -103,7 +132,7 @@ public class GameManager : MonoBehaviour
     {
         movementJoystickManager.LeftSideJoystick();
     }
-
+    */
     private IEnumerator ActivateCrashEffectDelay()
     {
         mathTaskGeneratorCanvas.SetActive(false);
@@ -123,7 +152,7 @@ public class GameManager : MonoBehaviour
     {
         gameplayController.RemoveLife();
     }
-    public void StartLevelButton()
+    public void StartGameLevel()
     {
         levelPanel.SetActive(false);
 
@@ -177,20 +206,25 @@ public class GameManager : MonoBehaviour
     public void RestartGameButton()
     {
         loseGameOverPanel.SetActive(false);
-
+        IsGameRestarted = true;
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(sceneIndex);
     }
 
-    public void QuitGameButton()
+    public void MainMenuButton()
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 
     public void TurnOnLevelPanel()
     {
         startPanel.SetActive(false);
         levelPanel.SetActive(true);
+
+#if UNITY_EDITOR
+        startLevelButtonGO.SetActive(true);
+        startGameLevelTextGO.SetActive(false);
+#endif
     }
 
     public void TurnOnSettingsPanel()
@@ -198,11 +232,17 @@ public class GameManager : MonoBehaviour
         startPanel.SetActive(false);
         settingsPanel.SetActive(true);
     }
-
+    /*
     public void SideOkButton()
     {
         settingsPanel.SetActive(false);
         levelPanel.SetActive(true);
+    }
+    */
+    public void BackButton()
+    {
+        settingsPanel.SetActive(false);
+        startPanel.SetActive(true);
     }
 
     public void AssignSnakePoints()
