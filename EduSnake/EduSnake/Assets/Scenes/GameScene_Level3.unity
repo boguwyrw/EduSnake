@@ -214,6 +214,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 552643880661419012, guid: 22f37a92cf6db6946a8cfc302325b5dc, type: 3}
+      propertyPath: numberRange
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 552643880661419012, guid: 22f37a92cf6db6946a8cfc302325b5dc, type: 3}
+      propertyPath: maxTasksNumber
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 552643880661419039, guid: 22f37a92cf6db6946a8cfc302325b5dc, type: 3}
       propertyPath: m_Name
       value: MathTaskGeneratorCanvas
@@ -334,6 +342,34 @@ PrefabInstance:
     - target: {fileID: 1057646464214567496, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
       propertyPath: m_Interactable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057646464214567496, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057646464214567496, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057646464214567496, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2028237996}
+    - target: {fileID: 1057646464214567496, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057646464214567496, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextLevelButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057646464214567496, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057646464214567496, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
@@ -604,6 +640,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8196895097534703364, guid: 7b1c26030fb13164c9ffa64e400893ac, type: 3}
+      propertyPath: increaseSpeed.Array.data[0]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196895097534703364, guid: 7b1c26030fb13164c9ffa64e400893ac, type: 3}
+      propertyPath: increaseSpeed.Array.data[1]
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8196895097534703365, guid: 7b1c26030fb13164c9ffa64e400893ac, type: 3}
       propertyPath: m_Name
       value: GameplayControllerCanvas
@@ -812,6 +856,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7449284058837358545, guid: 105c3185f266710448c0ae17da93fdf0, type: 3}
   m_PrefabInstance: {fileID: 526987404}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &526987406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7449284058837358549, guid: 105c3185f266710448c0ae17da93fdf0, type: 3}
+  m_PrefabInstance: {fileID: 526987404}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526987405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &595829850 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8848872821412255961, guid: 1e4f49afacfb1774db32a9b1f2e72e4a, type: 3}
@@ -951,16 +1006,16 @@ Transform:
   - {fileID: 822640694}
   - {fileID: 1324759087}
   - {fileID: 1519075044}
-  - {fileID: 932654551}
   - {fileID: 1572078170}
+  - {fileID: 932654551}
   - {fileID: 1786655463}
   - {fileID: 1551231506}
+  - {fileID: 2139829271}
   - {fileID: 996160586}
   - {fileID: 598799516}
   - {fileID: 373867765}
-  - {fileID: 2139829271}
-  - {fileID: 1615804193}
   - {fileID: 1244703402}
+  - {fileID: 1615804193}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2689,7 +2744,7 @@ PrefabInstance:
     - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
       propertyPath: joystick
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 526987406}
     - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
       propertyPath: horizontalJoystick
       value: 

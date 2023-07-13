@@ -197,6 +197,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
     }
 
+    public void NextLevelButton()
+    {
+        int nextSceneIndex = currentSceneIndex + 1;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+    }
+
     public void MainMenuButton()
     {
         SceneManager.LoadScene(0);
