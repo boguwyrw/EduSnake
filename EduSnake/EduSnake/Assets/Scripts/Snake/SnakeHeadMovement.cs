@@ -21,18 +21,12 @@ public class SnakeHeadMovement : MonoBehaviour
     private float normalMovement = 6.0f;
     private float fastMovement = 9.0f;
     private float currentMovement = 0.0f;
-    //private float lastMovementSpeed = 0.0f;
 
     private void Start()
     {
         snakeParent = transform.parent;
         headStartPosition = transform.position;
         rotationSpeed = maxRotationSpeed;
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void FixedUpdate()
@@ -81,7 +75,6 @@ public class SnakeHeadMovement : MonoBehaviour
 
     public void StopMovingSnakeHead()
     {
-        //lastMovementSpeed = currentMovement;
         currentMovement = 0.0f;
         rotationSpeed = 0.0f;
     }

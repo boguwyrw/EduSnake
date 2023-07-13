@@ -86,5 +86,7 @@ public class SnakeCollisionDetection : MonoBehaviour
         {
             snakePool[j].SetActive(false);
         }
+
+        GameManager.InstanceGM.StopGame();
     }
 }
