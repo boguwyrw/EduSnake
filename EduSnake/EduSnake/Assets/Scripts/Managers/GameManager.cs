@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region SerializeField Variables
+    [SerializeField] private GameObject fadePanel;
     [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject levelPanel;
     [SerializeField] private GameObject settingsPanel;
@@ -41,16 +42,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameplayControllerCanvas;
     [SerializeField] private GameObject joystickGO;
 
-    //[SerializeField] private Toggle rightToggle;
-    //[SerializeField] private Toggle leftToggle;
-
     [SerializeField] private TMP_Text levelNumberText;
 
     [SerializeField] private SnakeHeadMovement snakeHeadMovement;
     [SerializeField] private GameplayController gameplayController;
     [SerializeField] private GameOverManager gameOverManager;
     [SerializeField] private MathTaskGenerator mathTaskGenerator;
-    [SerializeField] private MovementJoystickManager movementJoystickManager;
     [SerializeField] private SnakeParticleEffects snakeParticleEffects;
 
     [SerializeField] private int gameSizeX = 23;
@@ -72,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        fadePanel.SetActive(true);
         startPanel.SetActive(true);
 
         levelPanel.SetActive(false);
@@ -83,7 +81,6 @@ public class GameManager : MonoBehaviour
         loseGameOverPanel.SetActive(false);
         winGameOverPanel.SetActive(false);
 
-        //TogglesListeners();
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         levelNumberText.text = "Level " + currentSceneIndex.ToString();
 
@@ -109,30 +106,14 @@ public class GameManager : MonoBehaviour
 #endif
         if (Input.touchCount > 0 && levelPanel.activeSelf)
         {
-            StartGameLevel();
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                StartGameLevel();
+            }
         }
     }
-    /*
-    private void TogglesListeners()
-    {
-        rightToggle.onValueChanged.AddListener(delegate {
-            RightToggleValueChanged(rightToggle);
-        });
 
-        leftToggle.onValueChanged.AddListener(delegate {
-            LeftToggleValueChanged(leftToggle);
-        });
-    }
-    private void RightToggleValueChanged(Toggle rightToggle)
-    {
-        movementJoystickManager.RightSideJoystick();
-    }
-
-    private void LeftToggleValueChanged(Toggle leftToggle)
-    {
-        movementJoystickManager.LeftSideJoystick();
-    }
-    */
     private IEnumerator ActivateCrashEffectDelay()
     {
         mathTaskGeneratorCanvas.SetActive(false);
@@ -142,6 +123,7 @@ public class GameManager : MonoBehaviour
         snakeParticleEffects.ActivateWrongParticleEffect();
 
         yield return new WaitUntil(() => snakeParticleEffects.GetWrongParticleEffectStopped());
+        fadePanel.SetActive(true);
         crashPanel.SetActive(true);
 
         yield return new WaitForSeconds(crashEffectDelayTime);
@@ -154,6 +136,7 @@ public class GameManager : MonoBehaviour
     }
     public void StartGameLevel()
     {
+        fadePanel.SetActive(false);
         levelPanel.SetActive(false);
 
         joystickGO.SetActive(true);
@@ -180,6 +163,7 @@ public class GameManager : MonoBehaviour
         mathTaskGeneratorCanvas.SetActive(false);
         gameplayControllerCanvas.SetActive(false);
 
+        fadePanel.SetActive(true);
         loseGameOverPanel.SetActive(true);
 
         gameOverManager.AssignFinalScore(gameplayController.Points);
@@ -193,6 +177,7 @@ public class GameManager : MonoBehaviour
         joystickGO.SetActive(false);
         gameplayControllerCanvas.SetActive(false);
 
+        fadePanel.SetActive(true);
         winGameOverPanel.SetActive(true);
 
         gameOverManager.AssignFinalScore(gameplayController.Points);
@@ -220,6 +205,7 @@ public class GameManager : MonoBehaviour
     {
         startPanel.SetActive(false);
         levelPanel.SetActive(true);
+        fadePanel.SetActive(true);
 
 #if UNITY_EDITOR
         startLevelButtonGO.SetActive(true);
@@ -232,13 +218,7 @@ public class GameManager : MonoBehaviour
         startPanel.SetActive(false);
         settingsPanel.SetActive(true);
     }
-    /*
-    public void SideOkButton()
-    {
-        settingsPanel.SetActive(false);
-        levelPanel.SetActive(true);
-    }
-    */
+
     public void BackButton()
     {
         settingsPanel.SetActive(false);
