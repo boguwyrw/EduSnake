@@ -32,7 +32,10 @@ public class SnakeHeadMovement : MonoBehaviour
     private void FixedUpdate()
     {
         SnakeHeadMove();
+    }
 
+    private void LateUpdate()
+    {
         RotateSnakeHead();
         BodyPartsMovement();
     }
@@ -63,7 +66,10 @@ public class SnakeHeadMovement : MonoBehaviour
                 Vector3 newPosForBody = previousBodyPart.position;
 
                 currentBodyPart.position = Vector3.Slerp(currentBodyPart.position, newPosForBody, Time.deltaTime * currentMovement);
-                currentBodyPart.rotation = Quaternion.Slerp(currentBodyPart.rotation, previousBodyPart.rotation, Time.deltaTime * currentMovement);
+                Vector3 directionToBodyPart = (newPosForBody - currentBodyPart.position).normalized;
+                Quaternion rotationToBodyPart = Quaternion.LookRotation(directionToBodyPart);
+                //currentBodyPart.rotation = Quaternion.Slerp(currentBodyPart.rotation, previousBodyPart.rotation, Time.deltaTime * currentMovement);
+                currentBodyPart.rotation = Quaternion.Slerp(currentBodyPart.rotation, rotationToBodyPart, Time.deltaTime * currentMovement);
             }
         }
     }

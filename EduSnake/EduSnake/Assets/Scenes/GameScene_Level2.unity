@@ -2008,6 +2008,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2028237996}
+    - target: {fileID: 1057646464551762157, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1057646464601241438, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2016,6 +2020,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2028237996}
+    - target: {fileID: 1057646465254197323, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1057646465756550143, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
