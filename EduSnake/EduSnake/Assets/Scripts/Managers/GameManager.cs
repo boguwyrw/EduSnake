@@ -127,6 +127,8 @@ public class GameManager : MonoBehaviour
         crashPanel.SetActive(true);
 
         yield return new WaitForSeconds(crashEffectDelayTime);
+        gameOverManager.ActivateDeactivateFade(true);
+        fadePanel.SetActive(false);
         LoseGameOver();
     }
 
@@ -163,7 +165,6 @@ public class GameManager : MonoBehaviour
         mathTaskGeneratorCanvas.SetActive(false);
         gameplayControllerCanvas.SetActive(false);
 
-        fadePanel.SetActive(true);
         loseGameOverPanel.SetActive(true);
 
         gameOverManager.AssignFinalScore(gameplayController.Points);
@@ -177,7 +178,7 @@ public class GameManager : MonoBehaviour
         joystickGO.SetActive(false);
         gameplayControllerCanvas.SetActive(false);
 
-        fadePanel.SetActive(true);
+        gameOverManager.ActivateDeactivateFade(true);
         winGameOverPanel.SetActive(true);
 
         gameOverManager.AssignFinalScore(gameplayController.Points);

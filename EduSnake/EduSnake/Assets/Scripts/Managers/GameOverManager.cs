@@ -5,6 +5,8 @@ using TMPro;
 
 public class GameOverManager : MonoBehaviour
 {
+    [SerializeField] private GameObject fadeGameOverPanel;
+
     [SerializeField] private TMP_Text bestWinScoreText;
     [SerializeField] private TMP_Text bestLoseScoreText;
     [SerializeField] private TMP_Text yourScoreWinText;
@@ -12,12 +14,12 @@ public class GameOverManager : MonoBehaviour
 
     private void Start()
     {
-        
+        ActivateDeactivateFade(false);
     }
 
-    private void Update()
+    public void ActivateDeactivateFade(bool fadeOnOff)
     {
-        
+        fadeGameOverPanel.SetActive(fadeOnOff);
     }
 
     public void AssignFinalScore(int finalScore)

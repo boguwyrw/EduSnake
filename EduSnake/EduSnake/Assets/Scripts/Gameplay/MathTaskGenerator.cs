@@ -15,12 +15,12 @@ public class MathTaskGenerator : MonoBehaviour
     [SerializeField] private GameObject wrongAnswerPrefab;
 
     [SerializeField] private int maxTasksNumber = 30;
+    [SerializeField] private int numberRange = 31;
 
     private int taskNumber = 0;
     private int firstNumber = 0;
     private int secondNumber = 0;
     private int resultNumber = 0;
-    private int numberRange = 31;
     private int boardGameSizeX = 0;
     private int boardGameSizeY = 0;
 
