@@ -8,8 +8,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     // TO DO
-    // 1. System zapisu
-    // 2. Efekty Do Tween
+    // 1. Efekty Do Tween
 
     #region GameManager Instance
     public static GameManager InstanceGM { get; private set; }
