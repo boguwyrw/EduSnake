@@ -12,6 +12,11 @@ public class SnakeParticleEffects : MonoBehaviour
         wrongAnswerEffect.gameObject.SetActive(false);
     }
 
+    public void SetNewPositionForWrongParticleEffect(Vector3 actualPosition)
+    {
+        wrongAnswerEffect.transform.position = actualPosition;
+    }
+
     public void ActivateWrongParticleEffect()
     {
         wrongAnswerEffect.gameObject.SetActive(true);
@@ -24,7 +29,7 @@ public class SnakeParticleEffects : MonoBehaviour
 
     public void ActivateCorrectParticleEffect(Vector3 answerPosition)
     {
-        correctAnswerEffect.gameObject.transform.position = answerPosition;
+        correctAnswerEffect.transform.position = answerPosition;
         correctAnswerEffect.gameObject.SetActive(true);
         correctAnswerEffect.Play();
         if (correctAnswerEffect.isStopped)

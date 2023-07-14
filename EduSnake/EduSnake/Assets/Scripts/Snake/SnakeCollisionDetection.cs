@@ -44,7 +44,9 @@ public class SnakeCollisionDetection : MonoBehaviour
                 Vector3 lastSnakePartPosition = new Vector3(lastSnakePart.position.x, lastSnakePart.position.y, lastSnakePart.position.z);
                 GameObject snakeBodyClone = Instantiate(snakeBodyPrefab, lastSnakePartPosition, Quaternion.identity, snakeParent);
                 snakePool.Add(snakeBodyClone);
-                snakeBodyClone.GetComponent<SnakeBodyDetection>().BodyColided += RemoveSnakeBodyParts;
+                SnakeBodyDetection snakeBodyDetection = snakeBodyClone.GetComponent<SnakeBodyDetection>();
+                //snakeBodyDetection.GetCollisionPoint();
+                snakeBodyDetection.BodyColided += RemoveSnakeBodyParts;
             }
 
             GameManager.InstanceGM.AssignSnakePoints();

@@ -8,7 +8,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     // TO DO
-    // 1. Efekty Do Tween
+    // 1. Body collision effect do poprawy - ukryæ czêœci we¿a po efekcie wybuchu
 
     #region GameManager Instance
     public static GameManager InstanceGM { get; private set; }
@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
         joystickGO.SetActive(false);
         gameplayControllerCanvas.SetActive(false);
 
+        //snakeParticleEffects.SetNewPositionForWrongParticleEffect(snakeParticleEffects.WrongAnswerEffectStartPosition);
         snakeParticleEffects.ActivateWrongParticleEffect();
 
         yield return new WaitUntil(() => snakeParticleEffects.GetWrongParticleEffectStopped());
@@ -188,7 +189,12 @@ public class GameManager : MonoBehaviour
     {
         snakeParticleEffects.ActivateCorrectParticleEffect(particlePosition);
     }
-
+    /*
+    public void SetPositionForWrongParticleEffect(Vector3 particleEffectPosition)
+    {
+        snakeParticleEffects.SetNewPositionForWrongParticleEffect(particleEffectPosition);
+    }
+    */
     public void RestartGameButton()
     {
         loseGameOverPanel.SetActive(false);
