@@ -5,17 +5,35 @@ using UnityEngine;
 
 public class SnakeBodyDetection : MonoBehaviour
 {
-    [SerializeField] private SnakeBodyCollisionPoint snakeBodyCollisionPoint;
+    [SerializeField] private ParticleSystem answerEffect;
+    [SerializeField] private GameObject[] snakeBodies;
 
     public event Action BodyColided;
+
+    private void ActivateAnswerCollisionEffect()
+    {
+        StartCoroutine(ActivateCollisionEffectDelay());
+    }
+
+    private IEnumerator ActivateCollisionEffectDelay()
+    {
+        GameManager.InstanceGM.ActivateStopMovingSnakeHead();
+        answerEffect.Play();
+        yield return new WaitUntil(() => answerEffect.isStopped);
+        BodyColided?.Invoke();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 8)
         {
-            snakeBodyCollisionPoint.CalculateCollisionPoint();
-            //GameManager.InstanceGM.SetPositionForWrongParticleEffect(snakeBodyCollisionPoint.CollisionPoint);
-            BodyColided?.Invoke();
+            ActivateAnswerCollisionEffect();
         }
+    }
+
+    public void ActivateSnakeBodyPart()
+    {
+        int snakeBodyIndex = UnityEngine.Random.Range(0, snakeBodies.Length);
+        snakeBodies[snakeBodyIndex].SetActive(true);
     }
 }

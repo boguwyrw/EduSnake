@@ -179,9 +179,9 @@ GameObject:
   - component: {fileID: 3084798244563927542}
   - component: {fileID: 3945042232412493288}
   - component: {fileID: 7171988435522601385}
+  - component: {fileID: 7748863902171949524}
   - component: {fileID: 3084798244563927543}
   - component: {fileID: 7396177411803869301}
-  - component: {fileID: 7748863902171949524}
   - component: {fileID: 7793725923419045179}
   m_Layer: 6
   m_Name: SnakeHead
@@ -239,6 +239,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!135 &7748863902171949524
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3084798244563927537}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0.5, z: 0.15}
 --- !u!114 &3084798244563927543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,19 +283,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 384
   mathTaskGenerator: {fileID: 0}
---- !u!135 &7748863902171949524
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3084798244563927537}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0.5, z: 0.15}
+  snakeParticleEffects: {fileID: 7793725923419045179}
 --- !u!114 &7793725923419045179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +298,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wrongAnswerEffect: {fileID: 5037090459573657455}
   correctAnswerEffect: {fileID: 4559764108150412390}
-  wrongAnswerEffectStartPosition: {fileID: 0}
 --- !u!1 &3084798244803665444
 GameObject:
   m_ObjectHideFlags: 0

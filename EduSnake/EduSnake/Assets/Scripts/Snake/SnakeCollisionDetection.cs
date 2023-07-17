@@ -8,6 +8,7 @@ public class SnakeCollisionDetection : MonoBehaviour
     [SerializeField] private GameObject snakeBodyPrefab;
     [SerializeField] private LayerMask snakeLayers;
     [SerializeField] private MathTaskGenerator mathTaskGenerator;
+    [SerializeField] private SnakeParticleEffects snakeParticleEffects;
 
     private Transform snakeParent;
 
@@ -45,7 +46,7 @@ public class SnakeCollisionDetection : MonoBehaviour
                 GameObject snakeBodyClone = Instantiate(snakeBodyPrefab, lastSnakePartPosition, Quaternion.identity, snakeParent);
                 snakePool.Add(snakeBodyClone);
                 SnakeBodyDetection snakeBodyDetection = snakeBodyClone.GetComponent<SnakeBodyDetection>();
-                //snakeBodyDetection.GetCollisionPoint();
+                snakeBodyDetection.ActivateSnakeBodyPart();
                 snakeBodyDetection.BodyColided += RemoveSnakeBodyParts;
             }
 
@@ -63,6 +64,7 @@ public class SnakeCollisionDetection : MonoBehaviour
     {
         if (IsInLayerMask(other.gameObject, snakeLayers))
         {
+            snakeParticleEffects.ActivateWrongParticleEffect();
             GameManager.InstanceGM.StopGame();
         }
     }

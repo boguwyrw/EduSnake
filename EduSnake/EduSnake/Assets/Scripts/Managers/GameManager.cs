@@ -120,9 +120,6 @@ public class GameManager : MonoBehaviour
         joystickGO.SetActive(false);
         gameplayControllerCanvas.SetActive(false);
 
-        //snakeParticleEffects.SetNewPositionForWrongParticleEffect(snakeParticleEffects.WrongAnswerEffectStartPosition);
-        snakeParticleEffects.ActivateWrongParticleEffect();
-
         yield return new WaitUntil(() => snakeParticleEffects.GetWrongParticleEffectStopped());
         fadePanel.SetActive(true);
         crashPanel.SetActive(true);
@@ -151,15 +148,20 @@ public class GameManager : MonoBehaviour
 
     public void StopGame()
     {
-        snakeHeadMovement.StopMovingSnakeHead();
+        ActivateStopMovingSnakeHead();
 
         RemoveSnakeLife();
         StartCoroutine(ActivateCrashEffectDelay());
     }
 
-    public void LoseGameOver()
+    public void ActivateStopMovingSnakeHead()
     {
         snakeHeadMovement.StopMovingSnakeHead();
+    }
+
+    public void LoseGameOver()
+    {
+        ActivateStopMovingSnakeHead();
 
         crashPanel.SetActive(false);
         joystickGO.SetActive(false);
@@ -173,7 +175,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGameOver()
     {
-        snakeHeadMovement.StopMovingSnakeHead();
+        ActivateStopMovingSnakeHead();
 
         mathTaskGeneratorCanvas.SetActive(false);
         joystickGO.SetActive(false);
@@ -189,12 +191,7 @@ public class GameManager : MonoBehaviour
     {
         snakeParticleEffects.ActivateCorrectParticleEffect(particlePosition);
     }
-    /*
-    public void SetPositionForWrongParticleEffect(Vector3 particleEffectPosition)
-    {
-        snakeParticleEffects.SetNewPositionForWrongParticleEffect(particleEffectPosition);
-    }
-    */
+
     public void RestartGameButton()
     {
         loseGameOverPanel.SetActive(false);
