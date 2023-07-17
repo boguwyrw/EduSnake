@@ -31,7 +31,7 @@ public class GameOverManager : MonoBehaviour
             bestLoseScoreText.text = "Best score: " + currentBestScore.ToString();
         }
 
-        yourScoreWinText.text = "Your score: " + finalScore.ToString();
-        yourScoreLoseText.text = "Your score: " + finalScore.ToString();
+        yourScoreWinText.text = "Your score: " + finalScore.ToString() + "/" + GameManager.InstanceGM.GetMaxTasksNumber();
+        yourScoreLoseText.text = "Your score: " + finalScore.ToString() + "/" + GameManager.InstanceGM.GetMaxTasksNumber();
     }
 }
