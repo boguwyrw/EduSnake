@@ -28,6 +28,8 @@ public class MathTaskGenerator : MonoBehaviour
 
     private List<GameObject> allAnswers = new List<GameObject>();
 
+    public int MaxTasksNumber { get { return maxTasksNumber; } }
+
     private void Start()
     {
         boardGameSizeX = GameManager.InstanceGM.GameSizeX;
@@ -116,7 +118,7 @@ public class MathTaskGenerator : MonoBehaviour
         {
             taskNumber++;
 
-            taskNumberText.text = "Task: " + taskNumber.ToString();
+            taskNumberText.text = "Task: " + taskNumber.ToString() + "/" + maxTasksNumber;
             firstNumber = Random.Range(1, numberRange);
             firstNumberText.text = firstNumber.ToString();
             secondNumber = Random.Range(1, numberRange);

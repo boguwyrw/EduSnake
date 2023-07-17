@@ -7,6 +7,16 @@ public class SnakeHeadMovement : MonoBehaviour
     [SerializeField] private Joystick joystick;
     [SerializeField] private Rigidbody snakeHeadRigidbody;
 
+    [SerializeField] private float slowMovement = 3.0f;
+    //[SerializeField] private float normalMovement = 6.0f;
+    [SerializeField] private float fastMovement = 9.0f;
+
+    private float currentMovement = 0.0f;
+    private float movementSpeedInterval = 0.0f;
+    private float speedIncreaseValue = 0.0f;
+    private float rotationSpeed = 0.0f;
+    private float maxRotationSpeed = 450.0f;
+
     private Transform snakeParent;
     private Transform currentBodyPart;
     private Transform previousBodyPart;
@@ -14,16 +24,9 @@ public class SnakeHeadMovement : MonoBehaviour
     private Vector3 headStartPosition;
     private Vector3 snakeDirection;
 
-    private float rotationSpeed = 0.0f;
-    private float maxRotationSpeed = 450.0f;
-
-    private float slowMovement = 3.0f;
-    private float normalMovement = 6.0f;
-    private float fastMovement = 9.0f;
-    private float currentMovement = 0.0f;
-
     private void Start()
     {
+        movementSpeedInterval = (slowMovement + fastMovement) / 2.0f;
         snakeParent = transform.parent;
         headStartPosition = transform.position;
         rotationSpeed = maxRotationSpeed;
@@ -92,7 +95,7 @@ public class SnakeHeadMovement : MonoBehaviour
         currentMovement = slowMovement;
         rotationSpeed = maxRotationSpeed;
     }
-
+    /*
     public void AssignNormalSpeed()
     {
         currentMovement = normalMovement;
@@ -101,5 +104,11 @@ public class SnakeHeadMovement : MonoBehaviour
     public void AssignFastSpeed()
     {
         currentMovement = fastMovement;
+    }
+    */
+    public void AssignNextSpeed()
+    {
+        speedIncreaseValue = movementSpeedInterval / (float)GameManager.InstanceGM.GetMaxTasksNumber();
+        currentMovement = currentMovement + speedIncreaseValue;
     }
 }

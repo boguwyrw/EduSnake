@@ -57,6 +57,9 @@ public class GameplayController : MonoBehaviour
             PlayerPrefs.SetInt("BestScore", points);
         }
 
+        GameManager.InstanceGM.SetNextSpeed();
+
+        /*
         if (points == increaseSpeed[0])
         {
             GameManager.InstanceGM.SetNormalSpeed();
@@ -65,6 +68,8 @@ public class GameplayController : MonoBehaviour
         {
             GameManager.InstanceGM.SetFastSpeed();
         }
+        */
+
         ShowPoints();
     }
 

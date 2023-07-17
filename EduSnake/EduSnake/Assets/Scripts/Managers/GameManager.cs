@@ -243,7 +243,7 @@ public class GameManager : MonoBehaviour
         gameplayController.AssignPoints();
         mathTaskGenerator.ShowPlayerCorrectChoose();
     }
-
+    /*
     public void SetNormalSpeed()
     {
         snakeHeadMovement.AssignNormalSpeed();
@@ -253,9 +253,19 @@ public class GameManager : MonoBehaviour
     {
         snakeHeadMovement.AssignFastSpeed();
     }
+    */
+    public void SetNextSpeed()
+    {
+        snakeHeadMovement.AssignNextSpeed();
+    }
 
     public void DeleteSavesButton()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    public float GetMaxTasksNumber()
+    {
+        return mathTaskGenerator.MaxTasksNumber;
     }
 }

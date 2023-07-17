@@ -3322,6 +3322,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1766714231}
     - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
+      propertyPath: fastMovement
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
+      propertyPath: slowMovement
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
       propertyPath: horizontalJoystick
       value: 
       objectReference: {fileID: 0}

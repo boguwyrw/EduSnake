@@ -2915,7 +2915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2971298828993614702, guid: 3486a458a00b9024cbeeb7c2893215f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2971298828993614702, guid: 3486a458a00b9024cbeeb7c2893215f6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3965,6 +3965,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 526987406}
     - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
+      propertyPath: fastMovement
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
+      propertyPath: slowMovement
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
       propertyPath: horizontalJoystick
       value: 
       objectReference: {fileID: 0}
@@ -3975,6 +3983,6 @@ PrefabInstance:
     - target: {fileID: 7396177411803869301, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
       propertyPath: mathTaskGenerator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 103377888}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
