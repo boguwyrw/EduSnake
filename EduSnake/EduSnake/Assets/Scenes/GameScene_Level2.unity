@@ -2355,8 +2355,8 @@ MonoBehaviour:
   gameOverManager: {fileID: 1656716036}
   mathTaskGenerator: {fileID: 1126970068}
   snakeParticleEffects: {fileID: 272201018}
-  gameSizeX: 18
-  gameSizeY: 23
+  gameSizeX: 17
+  gameSizeY: 22
   startGameLevelTextGO: {fileID: 623073287}
   startLevelButtonGO: {fileID: 392649205}
 --- !u!1001 &2034254178
