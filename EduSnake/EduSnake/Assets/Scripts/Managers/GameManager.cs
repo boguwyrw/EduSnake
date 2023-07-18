@@ -243,17 +243,7 @@ public class GameManager : MonoBehaviour
         gameplayController.AssignPoints();
         mathTaskGenerator.ShowPlayerCorrectChoose();
     }
-    /*
-    public void SetNormalSpeed()
-    {
-        snakeHeadMovement.AssignNormalSpeed();
-    }
 
-    public void SetFastSpeed()
-    {
-        snakeHeadMovement.AssignFastSpeed();
-    }
-    */
     public void SetNextSpeed()
     {
         snakeHeadMovement.AssignNextSpeed();

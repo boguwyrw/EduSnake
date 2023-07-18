@@ -13,6 +13,7 @@ public class SnakeCollisionDetection : MonoBehaviour
     private Transform snakeParent;
 
     private List<GameObject> snakePool = new List<GameObject>();
+    private Queue<GameObject> snakePoolQueue = new Queue<GameObject>(); // sprobowac zastosowac
     private int poolIndex = 0;
 
     private void Start()
@@ -31,11 +32,14 @@ public class SnakeCollisionDetection : MonoBehaviour
             {
                 poolIndex = 0;
             }
-
-            if (snakePool.Count > 0 && snakePool.Any(s => !s.activeSelf))
+            int numberOfBodyParts = transform.parent.childCount;
+            if (snakePoolQueue.Count > 0 && snakePoolQueue.Count > numberOfBodyParts)
+            //if (snakePool.Count > 0 && snakePool.Any(s => !s.activeSelf))
             {
-                snakePool[poolIndex].SetActive(true);
-                poolIndex++;
+                //snakePool[poolIndex].SetActive(true);
+                //poolIndex++;
+                GameObject snakeBody = snakePoolQueue.Dequeue();
+                snakeBody.SetActive(true);
             }
             else
             {
@@ -44,7 +48,8 @@ public class SnakeCollisionDetection : MonoBehaviour
                 Transform lastSnakePart = snakeParent.GetChild(lastSnakePartIndex).GetChild(0);
                 Vector3 lastSnakePartPosition = new Vector3(lastSnakePart.position.x, lastSnakePart.position.y, lastSnakePart.position.z);
                 GameObject snakeBodyClone = Instantiate(snakeBodyPrefab, lastSnakePartPosition, Quaternion.identity, snakeParent);
-                snakePool.Add(snakeBodyClone);
+                //snakePool.Add(snakeBodyClone);
+                snakePoolQueue.Enqueue(snakeBodyClone);
                 SnakeBodyDetection snakeBodyDetection = snakeBodyClone.GetComponent<SnakeBodyDetection>();
                 snakeBodyDetection.ActivateSnakeBodyPart();
                 snakeBodyDetection.BodyColided += RemoveSnakeBodyParts;

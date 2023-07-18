@@ -8,7 +8,6 @@ public class SnakeHeadMovement : MonoBehaviour
     [SerializeField] private Rigidbody snakeHeadRigidbody;
 
     [SerializeField] private float slowMovement = 3.0f;
-    //[SerializeField] private float normalMovement = 6.0f;
     [SerializeField] private float fastMovement = 9.0f;
 
     private float currentMovement = 0.0f;
@@ -72,7 +71,6 @@ public class SnakeHeadMovement : MonoBehaviour
                 currentBodyPart.position = Vector3.Slerp(currentBodyPart.position, newPosForBody, Time.deltaTime * currentMovement);
                 Vector3 directionToBodyPart = (newPosForBody - currentBodyPart.position).normalized;
                 Quaternion rotationToBodyPart = Quaternion.LookRotation(directionToBodyPart);
-                //currentBodyPart.rotation = Quaternion.Slerp(currentBodyPart.rotation, previousBodyPart.rotation, Time.deltaTime * currentMovement);
                 currentBodyPart.rotation = Quaternion.Slerp(currentBodyPart.rotation, rotationToBodyPart, Time.deltaTime * currentMovement);
             }
         }
@@ -95,17 +93,7 @@ public class SnakeHeadMovement : MonoBehaviour
         currentMovement = slowMovement;
         rotationSpeed = maxRotationSpeed;
     }
-    /*
-    public void AssignNormalSpeed()
-    {
-        currentMovement = normalMovement;
-    }
 
-    public void AssignFastSpeed()
-    {
-        currentMovement = fastMovement;
-    }
-    */
     public void AssignNextSpeed()
     {
         speedIncreaseValue = movementSpeedInterval / (float)GameManager.InstanceGM.GetMaxTasksNumber();

@@ -266,6 +266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 0}
   snakeHeadRigidbody: {fileID: 7171988435522601385}
+  slowMovement: 3
+  fastMovement: 9
 --- !u!114 &7396177411803869301
 MonoBehaviour:
   m_ObjectHideFlags: 0

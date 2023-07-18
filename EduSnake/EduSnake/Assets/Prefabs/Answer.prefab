@@ -239,6 +239,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   answerText: {fileID: 24818696395212740}
+  snakeLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  detectionRange: 8
 --- !u!1 &8851512794356297070
 GameObject:
   m_ObjectHideFlags: 0

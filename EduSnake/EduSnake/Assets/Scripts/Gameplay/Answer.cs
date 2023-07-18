@@ -6,14 +6,19 @@ using TMPro;
 public class Answer : MonoBehaviour
 {
     [SerializeField] private TMP_Text answerText;
+    [SerializeField] private LayerMask snakeLayerMask;
+    [SerializeField] private float detectionRange = 10.0f;
 
     private int boardGameSizeX = 0;
     private int boardGameSizeY = 0;
+
 
     private void Start()
     {
         boardGameSizeX = GameManager.InstanceGM.GameSizeX;
         boardGameSizeY = GameManager.InstanceGM.GameSizeY;
+
+        SnakeDetection();
     }
 
     public void AssignAnswer(int correctAnswer)
@@ -40,17 +45,19 @@ public class Answer : MonoBehaviour
         transform.position = new Vector3(randomPosX, 0.0f, randomPosZ);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void SnakeDetection()
     {
-        if (collision.gameObject.layer == 8)
+        Collider[] collidersDetected = Physics.OverlapSphere(transform.position, detectionRange, snakeLayerMask);
+        if (collidersDetected.Length > 0)
         {
             RePosition();
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.layer == 11)
+        bool collisionsObjects = collision.gameObject.layer == 8 || collision.gameObject.layer == 9 || collision.gameObject.layer == 10;
+        if (collisionsObjects)
         {
             RePosition();
         }

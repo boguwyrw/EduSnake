@@ -38,11 +38,6 @@ public class MathTaskGenerator : MonoBehaviour
         SpawnAnswers();
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void SpawnCorrectAnswer()
     {
         if (allAnswers.Count > 0)
@@ -93,7 +88,10 @@ public class MathTaskGenerator : MonoBehaviour
     {
         int randomPosX = Random.Range(-boardGameSizeX, boardGameSizeX + 1);
         int randomPosZ = Random.Range(-boardGameSizeY, boardGameSizeY + 1);
-        return Instantiate(answer, new Vector3(randomPosX, 0.0f, randomPosZ), Quaternion.identity);
+        // najpierw sprawdziæ czy pozycja jest daleko od weza a pozniej ja zespawnowac
+        Vector3 prefabPosition = new Vector3(randomPosX, 0.0f, randomPosZ);
+        // check distance to snake
+        return Instantiate(answer, prefabPosition, Quaternion.identity);
     }
 
     private void RemoveAllAnswers()
