@@ -14,7 +14,6 @@ public class SnakeCollisionDetection : MonoBehaviour
 
     private List<GameObject> snakePool = new List<GameObject>();
     private Queue<GameObject> snakePoolQueue = new Queue<GameObject>(); // sprobowac zastosowac
-    //private int poolIndex = 0;
 
     private void Start()
     {
@@ -37,7 +36,6 @@ public class SnakeCollisionDetection : MonoBehaviour
             }
             else
             {
-                //poolIndex = 0;
                 int lastSnakePartIndex = snakeParent.childCount - 1;
                 Transform lastSnakePart = snakeParent.GetChild(lastSnakePartIndex).GetChild(0);
                 Vector3 lastSnakePartPosition = new Vector3(lastSnakePart.position.x, lastSnakePart.position.y, lastSnakePart.position.z);
