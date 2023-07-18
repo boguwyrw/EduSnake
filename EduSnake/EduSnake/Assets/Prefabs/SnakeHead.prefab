@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64944cc37d3e595458d3759f4d0056dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snakeHeadMovement: {fileID: 3084798244563927543}
 --- !u!1 &3084798244803665444
 GameObject:
   m_ObjectHideFlags: 0

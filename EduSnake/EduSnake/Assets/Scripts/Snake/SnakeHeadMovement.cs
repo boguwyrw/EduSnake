@@ -13,6 +13,8 @@ public class SnakeHeadMovement : MonoBehaviour
     private float currentMovement = 0.0f;
     private float movementSpeedInterval = 0.0f;
     private float speedIncreaseValue = 0.0f;
+    private float superSpeedIncreaseValue = 1.35f;
+    private float superSpeedTime = 3.0f;
     private float rotationSpeed = 0.0f;
     private float maxRotationSpeed = 450.0f;
 
@@ -76,6 +78,14 @@ public class SnakeHeadMovement : MonoBehaviour
         }
     }
 
+    private IEnumerator FireSparkCollisionDelay()
+    {
+        float lastCurrentMovement = currentMovement;
+        currentMovement *= superSpeedIncreaseValue;
+        yield return new WaitForSeconds(superSpeedTime);
+        currentMovement = lastCurrentMovement;
+    }
+
     public void StartMovingSnakeHead()
     {
         currentMovement = slowMovement;
@@ -98,6 +108,11 @@ public class SnakeHeadMovement : MonoBehaviour
     {
         speedIncreaseValue = movementSpeedInterval / (float)GameManager.InstanceGM.GetMaxTasksNumber();
         currentMovement = currentMovement + speedIncreaseValue;
+    }
+
+    public void FireSparkCollision()
+    {
+        StartCoroutine(FireSparkCollisionDelay());
     }
 
     public List<Transform> AllSnakeParts()
