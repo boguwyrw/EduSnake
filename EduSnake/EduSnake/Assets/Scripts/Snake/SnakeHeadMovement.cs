@@ -99,4 +99,15 @@ public class SnakeHeadMovement : MonoBehaviour
         speedIncreaseValue = movementSpeedInterval / (float)GameManager.InstanceGM.GetMaxTasksNumber();
         currentMovement = currentMovement + speedIncreaseValue;
     }
+
+    public List<Transform> AllSnakeParts()
+    {
+        List<Transform> snakeParts = new List<Transform>();
+        snakeParts.Clear();
+        for (int i = 0; i < snakeParent.childCount; i++)
+        {
+            snakeParts.Add(snakeParent.GetChild(i));
+        }
+        return snakeParts;
+    }
 }

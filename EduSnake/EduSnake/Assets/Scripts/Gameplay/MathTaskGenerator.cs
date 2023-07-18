@@ -17,12 +17,16 @@ public class MathTaskGenerator : MonoBehaviour
     [SerializeField] private int maxTasksNumber = 30;
     [SerializeField] private int numberRange = 31;
 
+    [SerializeField] private float detectionRange = 6.0f;
+
     private int taskNumber = 0;
     private int firstNumber = 0;
     private int secondNumber = 0;
     private int resultNumber = 0;
     private int boardGameSizeX = 0;
     private int boardGameSizeY = 0;
+    private int randomPosX = 0;
+    private int randomPosZ = 0;
 
     private float spawnAnswersDelayTime = 1.2f;
 
@@ -86,11 +90,23 @@ public class MathTaskGenerator : MonoBehaviour
 
     private GameObject GeneratePrefab(GameObject answer)
     {
-        int randomPosX = Random.Range(-boardGameSizeX, boardGameSizeX + 1);
-        int randomPosZ = Random.Range(-boardGameSizeY, boardGameSizeY + 1);
-        // najpierw sprawdziæ czy pozycja jest daleko od weza a pozniej ja zespawnowac
-        Vector3 prefabPosition = new Vector3(randomPosX, 0.0f, randomPosZ);
-        // check distance to snake
+        Vector3 prefabPosition = Vector3.zero;
+        float distanceToBodyPart = 0.0f;
+
+        do
+        {
+            randomPosX = Random.Range(-boardGameSizeX, boardGameSizeX + 1);
+            randomPosZ = Random.Range(-boardGameSizeY, boardGameSizeY + 1);
+            prefabPosition = new Vector3(randomPosX, 0.0f, randomPosZ);
+            List<Transform> allSnake = GameManager.InstanceGM.GetAllSnakeParts();
+            //for (int i = 0; i < allSnake.Count; i++)
+            {
+                float currentDistance = Vector3.Distance(prefabPosition, allSnake[0].position);
+                distanceToBodyPart = currentDistance;
+            }
+        }
+        while (distanceToBodyPart < detectionRange);
+
         return Instantiate(answer, prefabPosition, Quaternion.identity);
     }
 

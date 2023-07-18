@@ -258,4 +258,9 @@ public class GameManager : MonoBehaviour
     {
         return mathTaskGenerator.MaxTasksNumber;
     }
+
+    public List<Transform> GetAllSnakeParts()
+    {
+        return snakeHeadMovement.AllSnakeParts();
+    }
 }
