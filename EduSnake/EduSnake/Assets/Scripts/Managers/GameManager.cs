@@ -263,4 +263,14 @@ public class GameManager : MonoBehaviour
     {
         return snakeHeadMovement.AllSnakeParts();
     }
+
+    public Transform GetCorrectAnswer()
+    {
+        return mathTaskGenerator.CorrectAnswer();
+    }
+
+    public bool GetAreAnswersSpawned()
+    {
+        return mathTaskGenerator.AreAnswersSpawned;
+    }
 }

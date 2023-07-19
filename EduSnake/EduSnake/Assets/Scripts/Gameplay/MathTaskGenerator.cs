@@ -31,9 +31,13 @@ public class MathTaskGenerator : MonoBehaviour
 
     private float spawnAnswersDelayTime = 1.2f;
 
+    private bool areAnswersSpawned = false;
+
     private List<GameObject> allAnswers = new List<GameObject>();
 
     public int MaxTasksNumber { get { return maxTasksNumber; } }
+
+    public bool AreAnswersSpawned { get { return areAnswersSpawned; } }
 
     private void Start()
     {
@@ -108,6 +112,8 @@ public class MathTaskGenerator : MonoBehaviour
 
     private void RemoveAllAnswers()
     {
+        areAnswersSpawned = false;
+
         for (int i = 0; i < allAnswers.Count; i++)
         {
             Answer answer = allAnswers[i].GetComponent<Answer>();
@@ -143,6 +149,8 @@ public class MathTaskGenerator : MonoBehaviour
             {
                 SpawnWrongAnswer();
             }
+
+            areAnswersSpawned = true;
         }
     }
 
@@ -182,6 +190,18 @@ public class MathTaskGenerator : MonoBehaviour
         for (int i = 0; i < allAnswers.Count; i++)
         {
             allAnswers[i].SetActive(true);
+        }
+    }
+
+    public Transform CorrectAnswer()
+    {
+        if (allAnswers.Count > 0)
+        {
+            return allAnswers[0].transform;
+        }
+        else
+        {
+            return null;
         }
     }
 }
