@@ -13,7 +13,7 @@ public class SnakeCollisionDetection : MonoBehaviour
     private Transform snakeParent;
 
     private List<GameObject> snakePool = new List<GameObject>();
-    private Queue<GameObject> snakePoolQueue = new Queue<GameObject>(); // sprobowac zastosowac
+    private Queue<GameObject> snakePoolQueue = new Queue<GameObject>();
 
     private void Start()
     {

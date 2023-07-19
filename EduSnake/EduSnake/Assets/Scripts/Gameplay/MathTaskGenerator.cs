@@ -100,16 +100,8 @@ public class MathTaskGenerator : MonoBehaviour
             randomPosX = Random.Range(-boardGameSizeX, boardGameSizeX + 1);
             randomPosZ = Random.Range(-boardGameSizeY, boardGameSizeY + 1);
             prefabPosition = new Vector3(randomPosX, 0.0f, randomPosZ);
-            /*
-            //for (int i = 0; i < allSnake.Count; i++)
-            {
-                float currentDistance = Vector3.Distance(prefabPosition, allSnake[0].position);
-                distanceToBodyPart = currentDistance;
-            }
-            */
         }
         while (allSnake.Any(s => Vector3.Distance(prefabPosition, s.position) < distanceToBodyPart));
-        //while (distanceToBodyPart < detectionRange);
 
         return Instantiate(answer, prefabPosition, Quaternion.identity);
     }

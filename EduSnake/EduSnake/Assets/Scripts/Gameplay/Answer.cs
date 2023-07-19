@@ -7,7 +7,6 @@ public class Answer : MonoBehaviour
 {
     [SerializeField] private TMP_Text answerText;
     [SerializeField] private LayerMask snakeLayerMask;
-    //[SerializeField] private float detectionRange = 10.0f;
 
     private int boardGameSizeX = 0;
     private int boardGameSizeY = 0;
@@ -17,8 +16,6 @@ public class Answer : MonoBehaviour
     {
         boardGameSizeX = GameManager.InstanceGM.GameSizeX;
         boardGameSizeY = GameManager.InstanceGM.GameSizeY;
-
-        //SnakeDetection();
     }
 
     public void AssignAnswer(int correctAnswer)
@@ -44,22 +41,17 @@ public class Answer : MonoBehaviour
         int randomPosZ = Random.Range(-boardGameSizeY, boardGameSizeY + 1);
         transform.position = new Vector3(randomPosX, 0.0f, randomPosZ);
     }
-    /*
-    private void SnakeDetection()
+
+    private void OnCollisionEnter(Collision collision)
     {
-        Collider[] collidersDetected = Physics.OverlapSphere(transform.position, detectionRange, snakeLayerMask);
-        if (collidersDetected.Length > 0)
+        if (IsInLayerMask(collision.gameObject, snakeLayerMask))
         {
             RePosition();
         }
     }
-    */
-    private void OnCollisionEnter(Collision collision)
+
+    private bool IsInLayerMask(GameObject obj, LayerMask layerMask)
     {
-        bool collisionsObjects = collision.gameObject.layer == 8 || collision.gameObject.layer == 9 || collision.gameObject.layer == 10;
-        if (collisionsObjects)
-        {
-            RePosition();
-        }
+        return (layerMask.value & (1 << obj.layer)) > 0;
     }
 }
