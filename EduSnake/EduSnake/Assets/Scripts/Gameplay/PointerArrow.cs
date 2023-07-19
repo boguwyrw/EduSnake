@@ -14,6 +14,7 @@ public class PointerArrow : MonoBehaviour
     private float minValue = 0.2f;
     private float currentMiddleValue = 0.0f;
     private float increaseValue = 0.005f;
+    private float uiCoveringValue = 0.88f;
 
     private void Start()
     {
@@ -31,7 +32,7 @@ public class PointerArrow : MonoBehaviour
             //Debug.Log(distanceToAnswer);
             Vector3 viewPos = Camera.main.WorldToViewportPoint(GameManager.InstanceGM.GetCorrectAnswer().position);
 
-            if (viewPos.x > 0.0f && viewPos.y > 0.0f)
+            if (viewPos.x > 0.0f && viewPos.y < uiCoveringValue && viewPos.y > 0.0f)
             {
                 if (currentMiddleValue < middleValue)
                 {
