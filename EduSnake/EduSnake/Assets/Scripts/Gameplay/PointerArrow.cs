@@ -10,7 +10,7 @@ public class PointerArrow : MonoBehaviour
     private Transform correctAnswerTransform;
 
     private float minDistanceToAnswer = 1.85f;
-    private float middleValue = 0.5f;
+    private float middleValue = 0.6f;
     private float minValue = 0.2f;
     private float currentMiddleValue = 0.0f;
     private float increaseValue = 0.005f;

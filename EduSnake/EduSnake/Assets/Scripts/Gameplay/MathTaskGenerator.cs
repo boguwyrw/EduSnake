@@ -18,7 +18,7 @@ public class MathTaskGenerator : MonoBehaviour
     [SerializeField] private int maxTasksNumber = 30;
     [SerializeField] private int numberRange = 31;
 
-    [SerializeField] private float detectionRange = 6.0f;
+    [SerializeField] private float detectionRange = 5.0f;
 
     private int taskNumber = 0;
     private int firstNumber = 0;
@@ -97,7 +97,7 @@ public class MathTaskGenerator : MonoBehaviour
     {
         List<Transform> allSnake = GameManager.InstanceGM.GetAllSnakeParts();
         Vector3 prefabPosition = Vector3.zero;
-        float distanceToBodyPart = 0.0f;
+        //float distanceToBodyPart = 0.0f;
 
         do
         {
@@ -105,7 +105,7 @@ public class MathTaskGenerator : MonoBehaviour
             randomPosZ = Random.Range(-boardGameSizeY, boardGameSizeY + 1);
             prefabPosition = new Vector3(randomPosX, 0.0f, randomPosZ);
         }
-        while (allSnake.Any(s => Vector3.Distance(prefabPosition, s.position) < distanceToBodyPart));
+        while (allSnake.Any(s => Vector3.Distance(prefabPosition, s.position) < detectionRange));
 
         return Instantiate(answer, prefabPosition, Quaternion.identity);
     }
