@@ -7,6 +7,7 @@ public class Answer : MonoBehaviour
 {
     [SerializeField] private TMP_Text answerText;
     [SerializeField] private LayerMask snakeLayerMask;
+    [SerializeField] private LayerMask collidersLayerMask;
 
     private int boardGameSizeX = 0;
     private int boardGameSizeY = 0;
@@ -16,6 +17,19 @@ public class Answer : MonoBehaviour
     {
         boardGameSizeX = GameManager.InstanceGM.GameSizeX;
         boardGameSizeY = GameManager.InstanceGM.GameSizeY;
+    }
+
+    private void OnEnable()
+    {
+        // zrobic RePosition() jak pojawi siê za blisko weza
+        Collider[] snakeColliders = null;
+        //List<Transform> allSnakeParts = GameManager.InstanceGM.GetAllSnakeParts();
+        do
+        {
+            RePosition();
+            snakeColliders = Physics.OverlapSphere(transform.position, 5.0f, collidersLayerMask);
+        }
+        while (snakeColliders.Length > 0);
     }
 
     public void AssignAnswer(int correctAnswer)

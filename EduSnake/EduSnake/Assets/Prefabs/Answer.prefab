@@ -242,6 +242,9 @@ MonoBehaviour:
   snakeLayerMask:
     serializedVersion: 2
     m_Bits: 3840
+  collidersLayerMask:
+    serializedVersion: 2
+    m_Bits: 192
 --- !u!1 &8851512794356297070
 GameObject:
   m_ObjectHideFlags: 0

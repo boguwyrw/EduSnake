@@ -7,9 +7,6 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    // TO DO
-    // 1. Body collision effect do poprawy - ukryæ czêœci we¿a po efekcie wybuchu
-
     #region GameManager Instance
     public static GameManager InstanceGM { get; private set; }
 
