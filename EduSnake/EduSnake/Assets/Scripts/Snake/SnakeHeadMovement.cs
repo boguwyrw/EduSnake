@@ -16,7 +16,7 @@ public class SnakeHeadMovement : MonoBehaviour
     private float superSpeedIncreaseValue = 1.35f;
     private float superSpeedTime = 3.0f;
     private float rotationSpeed = 0.0f;
-    private float maxRotationSpeed = 450.0f;
+    private float maxRotationSpeed = 300.0f;
 
     private Transform snakeParent;
     private Transform currentBodyPart;
@@ -42,7 +42,8 @@ public class SnakeHeadMovement : MonoBehaviour
 
     private void SnakeHeadMove()
     {
-        snakeDirection = new Vector3(joystick.Horizontal, 0.0f, joystick.Vertical);
+        Vector3 joystickDirection = new Vector3(joystick.Horizontal, 0.0f, joystick.Vertical);
+        snakeDirection = (joystickDirection + transform.forward * Time.deltaTime * rotationSpeed).normalized;
         transform.Translate(Vector3.forward * Time.deltaTime * currentMovement);
     }
 
@@ -50,7 +51,9 @@ public class SnakeHeadMovement : MonoBehaviour
     {
         if (snakeDirection != Vector3.zero && rotationSpeed != 0.0f)
         {
-            transform.rotation = Quaternion.LookRotation(snakeDirection * Time.deltaTime * rotationSpeed);
+            Quaternion rotationTarget = Quaternion.LookRotation(snakeDirection);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, rotationTarget, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.LookRotation(snakeDirection);
         }
     }
 
