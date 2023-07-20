@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class Answer : MonoBehaviour
 {
@@ -11,25 +12,25 @@ public class Answer : MonoBehaviour
 
     private int boardGameSizeX = 0;
     private int boardGameSizeY = 0;
+    private int randomPosX = 0;
+    private int randomPosZ = 0;
 
+    //private Collider[] snakeColliders = null;
+
+    private Vector3 prefabPosition = Vector3.zero;
 
     private void Start()
     {
         boardGameSizeX = GameManager.InstanceGM.GameSizeX;
         boardGameSizeY = GameManager.InstanceGM.GameSizeY;
+
+        prefabPosition = transform.position;
     }
 
     private void OnEnable()
     {
-        // zrobic RePosition() jak pojawi siê za blisko weza
-        Collider[] snakeColliders = null;
-        //List<Transform> allSnakeParts = GameManager.InstanceGM.GetAllSnakeParts();
-        do
-        {
-            RePosition();
-            snakeColliders = Physics.OverlapSphere(transform.position, 5.0f, collidersLayerMask);
-        }
-        while (snakeColliders.Length > 0);
+        prefabPosition = transform.position;
+        RePosition();
     }
 
     public void AssignAnswer(int correctAnswer)
@@ -51,9 +52,18 @@ public class Answer : MonoBehaviour
 
     public void RePosition()
     {
-        int randomPosX = Random.Range(-boardGameSizeX, boardGameSizeX + 1);
-        int randomPosZ = Random.Range(-boardGameSizeY, boardGameSizeY + 1);
-        transform.position = new Vector3(randomPosX, 0.0f, randomPosZ);
+        List<Transform> allSnake = GameManager.InstanceGM.GetAllSnakeParts();
+        float minDistanceToSnake = GameManager.InstanceGM.GetDetectionRange();
+
+        while (allSnake.Any(s => Vector3.Distance(prefabPosition, s.position) < minDistanceToSnake))
+        {
+            randomPosX = Random.Range(-boardGameSizeX, boardGameSizeX + 1);
+            randomPosZ = Random.Range(-boardGameSizeY, boardGameSizeY + 1);
+            prefabPosition = new Vector3(randomPosX, 0.0f, randomPosZ);
+        }
+
+        transform.position = prefabPosition;
+
     }
 
     private void OnCollisionEnter(Collision collision)

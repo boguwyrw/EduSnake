@@ -39,6 +39,8 @@ public class MathTaskGenerator : MonoBehaviour
 
     public bool AreAnswersSpawned { get { return areAnswersSpawned; } }
 
+    public float DetectionRange { get { return detectionRange; } }
+
     private void Start()
     {
         boardGameSizeX = GameManager.InstanceGM.GameSizeX;
@@ -97,7 +99,6 @@ public class MathTaskGenerator : MonoBehaviour
     {
         List<Transform> allSnake = GameManager.InstanceGM.GetAllSnakeParts();
         Vector3 prefabPosition = Vector3.zero;
-        //float distanceToBodyPart = 0.0f;
 
         do
         {

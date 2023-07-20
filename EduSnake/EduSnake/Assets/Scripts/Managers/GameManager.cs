@@ -270,4 +270,9 @@ public class GameManager : MonoBehaviour
     {
         return mathTaskGenerator.AreAnswersSpawned;
     }
+
+    public float GetDetectionRange()
+    {
+        return mathTaskGenerator.DetectionRange;
+    }
 }
