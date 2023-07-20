@@ -15,8 +15,6 @@ public class Answer : MonoBehaviour
     private int randomPosX = 0;
     private int randomPosZ = 0;
 
-    //private Collider[] snakeColliders = null;
-
     private Vector3 prefabPosition = Vector3.zero;
 
     private void Start()

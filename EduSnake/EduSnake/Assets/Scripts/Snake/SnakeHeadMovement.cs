@@ -40,11 +40,6 @@ public class SnakeHeadMovement : MonoBehaviour
         BodyPartsMovement();
     }
 
-    private void LateUpdate()
-    {
-        
-    }
-
     private void SnakeHeadMove()
     {
         snakeDirection = new Vector3(joystick.Horizontal, 0.0f, joystick.Vertical);

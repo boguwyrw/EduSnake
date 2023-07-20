@@ -7,8 +7,6 @@ public class PointerArrow : MonoBehaviour
     [SerializeField] private GameObject pointerArrow;
     [SerializeField] private GameObject destinationPoint;
 
-    private Transform correctAnswerTransform;
-
     private float minDistanceToAnswer = 1.85f;
     private float middleValue = 0.6f;
     private float minValue = 0.2f;
@@ -29,7 +27,7 @@ public class PointerArrow : MonoBehaviour
         {
             Vector3 startPosition = new Vector3(transform.parent.position.x, GameManager.InstanceGM.GetCorrectAnswer().position.y, transform.parent.position.z);
             float distanceToAnswer = Vector3.Distance(transform.position, GameManager.InstanceGM.GetCorrectAnswer().position);
-            //Debug.Log(distanceToAnswer);
+            
             Vector3 viewPos = Camera.main.WorldToViewportPoint(GameManager.InstanceGM.GetCorrectAnswer().position);
 
             if (viewPos.x > 0.0f && viewPos.y < uiCoveringValue && viewPos.y > 0.0f)

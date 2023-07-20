@@ -12,7 +12,6 @@ public class SnakeCollisionDetection : MonoBehaviour
 
     private Transform snakeParent;
 
-    //private List<GameObject> snakePool = new List<GameObject>();
     private Queue<GameObject> snakePoolQueue = new Queue<GameObject>();
 
     private void Start()
@@ -82,12 +81,7 @@ public class SnakeCollisionDetection : MonoBehaviour
         {
             snakeParent.GetChild(i).gameObject.SetActive(false);
         }
-        /*
-        for (int j = 0; j < snakePool.Count; j++)
-        {
-            snakePool[j].SetActive(false);
-        }
-        */
+
         GameManager.InstanceGM.StopGame();
     }
 }
