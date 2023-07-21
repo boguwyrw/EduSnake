@@ -82,9 +82,11 @@ public class SnakeHeadMovement : MonoBehaviour
     private IEnumerator FireSparkCollisionDelay()
     {
         float lastCurrentMovement = currentMovement;
+        GameManager.InstanceGM.TurnOnSnakeOnFireEffect();
         currentMovement *= superSpeedIncreaseValue;
         yield return new WaitForSeconds(superSpeedTime);
         currentMovement = lastCurrentMovement;
+        GameManager.InstanceGM.TurnOffSnakeOnFireEffect();
     }
 
     public void StartMovingSnakeHead()

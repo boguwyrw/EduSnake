@@ -473,6 +473,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4544090040652487219, guid: 8fa82dab67df23c4aacedb29c70eed4e, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4544090040652487229, guid: 8fa82dab67df23c4aacedb29c70eed4e, type: 3}
       propertyPath: m_Name
       value: CorrectAnswerEffect
@@ -500,6 +504,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3084798244563927542}
     m_Modifications:
+    - target: {fileID: 1264234670376920960, guid: cee825f81c4948246826fade253de7b7, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1264234670376920961, guid: cee825f81c4948246826fade253de7b7, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -551,6 +559,14 @@ PrefabInstance:
     - target: {fileID: 1264234670376920974, guid: cee825f81c4948246826fade253de7b7, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1264234670556822217, guid: cee825f81c4948246826fade253de7b7, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1264234670769181204, guid: cee825f81c4948246826fade253de7b7, type: 3}
+      propertyPath: playOnAwake
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cee825f81c4948246826fade253de7b7, type: 3}

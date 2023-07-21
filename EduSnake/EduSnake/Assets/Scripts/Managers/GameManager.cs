@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameOverManager gameOverManager;
     [SerializeField] private MathTaskGenerator mathTaskGenerator;
     [SerializeField] private SnakeParticleEffects snakeParticleEffects;
+    [SerializeField] private SnakeOnFireController snakeOnFireController;
 
     [SerializeField] private int gameSizeX = 23;
     [SerializeField] private int gameSizeY = 23;
@@ -259,6 +260,16 @@ public class GameManager : MonoBehaviour
     public void ShowDirArrow()
     {
         snakeHeadMovement.ShowDirectionArrow();
+    }
+
+    public void TurnOffSnakeOnFireEffect()
+    {
+        snakeOnFireController.TurnOffFireEffect();
+    }
+
+    public void TurnOnSnakeOnFireEffect()
+    {
+        snakeOnFireController.TurnOnFireEffect();
     }
 
     public float GetMaxTasksNumber()
