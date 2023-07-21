@@ -251,6 +251,16 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
+    public void HideDirArrow()
+    {
+        snakeHeadMovement.HideDirectionArrow();
+    }
+
+    public void ShowDirArrow()
+    {
+        snakeHeadMovement.ShowDirectionArrow();
+    }
+
     public float GetMaxTasksNumber()
     {
         return mathTaskGenerator.MaxTasksNumber;

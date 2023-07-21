@@ -268,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 0}
   snakeHeadRigidbody: {fileID: 7171988435522601385}
+  directionArrow: {fileID: 8848084324128920637}
   slowMovement: 3
   fastMovement: 9
 --- !u!114 &7396177411803869301
@@ -740,10 +741,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arrow
       objectReference: {fileID: 0}
+    - target: {fileID: 196924876571402427, guid: d52fe174f51f09b4cb64020f2bb5f684, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d52fe174f51f09b4cb64020f2bb5f684, type: 3}
 --- !u!4 &8848084324128920626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 196924876571402420, guid: d52fe174f51f09b4cb64020f2bb5f684, type: 3}
+  m_PrefabInstance: {fileID: 8678766273306424454}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8848084324128920637 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 196924876571402427, guid: d52fe174f51f09b4cb64020f2bb5f684, type: 3}
   m_PrefabInstance: {fileID: 8678766273306424454}
   m_PrefabAsset: {fileID: 0}

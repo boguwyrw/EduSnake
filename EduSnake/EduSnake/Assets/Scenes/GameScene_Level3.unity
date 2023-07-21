@@ -700,6 +700,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8196895097534703364, guid: 7b1c26030fb13164c9ffa64e400893ac, type: 3}
+      propertyPath: maxDirectionArrow
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196895097534703364, guid: 7b1c26030fb13164c9ffa64e400893ac, type: 3}
+      propertyPath: timeToShowDirectionArrow
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196895097534703364, guid: 7b1c26030fb13164c9ffa64e400893ac, type: 3}
       propertyPath: increaseSpeed.Array.data[0]
       value: 8
       objectReference: {fileID: 0}

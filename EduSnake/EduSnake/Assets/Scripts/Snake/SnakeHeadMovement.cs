@@ -6,6 +6,7 @@ public class SnakeHeadMovement : MonoBehaviour
 {
     [SerializeField] private Joystick joystick;
     [SerializeField] private Rigidbody snakeHeadRigidbody;
+    [SerializeField] private GameObject directionArrow;
 
     [SerializeField] private float slowMovement = 3.0f;
     [SerializeField] private float fastMovement = 9.0f;
@@ -31,6 +32,8 @@ public class SnakeHeadMovement : MonoBehaviour
         snakeParent = transform.parent;
         headStartPosition = transform.position;
         rotationSpeed = maxRotationSpeed;
+
+        HideDirectionArrow();
     }
 
     private void FixedUpdate()
@@ -111,6 +114,16 @@ public class SnakeHeadMovement : MonoBehaviour
     public void FireSparkCollision()
     {
         StartCoroutine(FireSparkCollisionDelay());
+    }
+
+    public void HideDirectionArrow()
+    {
+        directionArrow.SetActive(false);
+    }
+
+    public void ShowDirectionArrow()
+    {
+        directionArrow.SetActive(true);
     }
 
     public List<Transform> AllSnakeParts()
