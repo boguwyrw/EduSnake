@@ -3505,6 +3505,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8196895097534703364, guid: 7b1c26030fb13164c9ffa64e400893ac, type: 3}
+      propertyPath: timeToShowDirectionArrow
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196895097534703364, guid: 7b1c26030fb13164c9ffa64e400893ac, type: 3}
       propertyPath: increaseSpeed.Array.data[0]
       value: 5
       objectReference: {fileID: 0}

@@ -737,7 +737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8196895097534703364, guid: 7b1c26030fb13164c9ffa64e400893ac, type: 3}
       propertyPath: timeToShowDirectionArrow
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8196895097534703364, guid: 7b1c26030fb13164c9ffa64e400893ac, type: 3}
       propertyPath: increaseSpeed.Array.data[0]

@@ -2604,7 +2604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8196895097534703364, guid: 7b1c26030fb13164c9ffa64e400893ac, type: 3}
       propertyPath: timeToShowDirectionArrow
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8196895097534703365, guid: 7b1c26030fb13164c9ffa64e400893ac, type: 3}
       propertyPath: m_Name
