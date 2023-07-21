@@ -1876,6 +1876,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e5527f1b5e11804995b81d12704df8e, type: 3}
+--- !u!114 &864209767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1561572900895991718, guid: 6e5527f1b5e11804995b81d12704df8e, type: 3}
+  m_PrefabInstance: {fileID: 864209766}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c87c3b825e0fd3b43b0792556d46cff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &884008622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3765,7 +3776,7 @@ MonoBehaviour:
   gameOverManager: {fileID: 175326322}
   mathTaskGenerator: {fileID: 103377888}
   snakeParticleEffects: {fileID: 272201018}
-  snakeOnFireController: {fileID: 0}
+  snakeOnFireController: {fileID: 864209767}
   gameSizeX: 25
   gameSizeY: 22
   startGameLevelTextGO: {fileID: 227976098}
