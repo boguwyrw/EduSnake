@@ -371,6 +371,38 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1057646464460683863, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2028237996}
+    - target: {fileID: 1057646464460683863, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGameButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057646464601241438, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2028237996}
+    - target: {fileID: 1057646464601241438, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057646465083719604, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2028237996}
+    - target: {fileID: 1057646465083719604, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057646465756550143, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2028237996}
+    - target: {fileID: 1057646465756550143, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGameButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
 --- !u!1 &175326320 stripped
@@ -3733,6 +3765,7 @@ MonoBehaviour:
   gameOverManager: {fileID: 175326322}
   mathTaskGenerator: {fileID: 103377888}
   snakeParticleEffects: {fileID: 272201018}
+  snakeOnFireController: {fileID: 0}
   gameSizeX: 25
   gameSizeY: 22
   startGameLevelTextGO: {fileID: 227976098}
