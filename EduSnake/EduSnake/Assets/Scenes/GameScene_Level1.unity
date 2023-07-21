@@ -2440,6 +2440,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1766714231}
     - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
+      propertyPath: maxRotationSpeed
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
       propertyPath: horizontalJoystick
       value: 
       objectReference: {fileID: 0}

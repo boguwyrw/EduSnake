@@ -239,10 +239,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   answerText: {fileID: 24818696395212740}
-  snakeLayerMask:
+  collidersWithObjectsLayerMask:
     serializedVersion: 2
     m_Bits: 3840
-  collidersLayerMask:
+  collidersWithSnakeLayerMask:
     serializedVersion: 2
     m_Bits: 192
 --- !u!1 &8851512794356297070

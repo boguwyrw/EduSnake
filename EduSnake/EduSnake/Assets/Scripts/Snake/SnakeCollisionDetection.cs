@@ -43,7 +43,7 @@ public class SnakeCollisionDetection : MonoBehaviour
                 snakePoolQueue.Enqueue(snakeBodyClone);
                 SnakeBodyDetection snakeBodyDetection = snakeBodyClone.GetComponent<SnakeBodyDetection>();
                 snakeBodyDetection.ActivateSnakeBodyPart();
-                snakeBodyDetection.BodyColided += RemoveSnakeBodyParts;
+                snakeBodyDetection.OnBodyColided += RemoveSnakeBodyParts;
             }
 
             GameManager.InstanceGM.AssignSnakePoints();

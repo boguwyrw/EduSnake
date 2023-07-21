@@ -16,7 +16,7 @@ public class SnakeHeadMovement : MonoBehaviour
     private float superSpeedIncreaseValue = 1.35f;
     private float superSpeedTime = 3.0f;
     private float rotationSpeed = 0.0f;
-    private float maxRotationSpeed = 300.0f;
+    private float maxRotationSpeed = 260.0f; // 360
 
     private Transform snakeParent;
     private Transform currentBodyPart;

@@ -7,8 +7,8 @@ using System.Linq;
 public class Answer : MonoBehaviour
 {
     [SerializeField] private TMP_Text answerText;
-    [SerializeField] private LayerMask snakeLayerMask;
-    [SerializeField] private LayerMask collidersLayerMask;
+    [SerializeField] private LayerMask collidersWithObjectsLayerMask;
+    //[SerializeField] private LayerMask collidersWithSnakeLayerMask;
 
     private int boardGameSizeX = 0;
     private int boardGameSizeY = 0;
@@ -53,21 +53,29 @@ public class Answer : MonoBehaviour
         List<Transform> allSnake = GameManager.InstanceGM.GetAllSnakeParts();
         float minDistanceToSnake = GameManager.InstanceGM.GetDetectionRange();
 
+        //RandomAnswerPositionXZ();
+
         while (allSnake.Any(s => Vector3.Distance(prefabPosition, s.position) < minDistanceToSnake))
         {
-            randomPosX = Random.Range(-boardGameSizeX, boardGameSizeX + 1);
-            randomPosZ = Random.Range(-boardGameSizeY, boardGameSizeY + 1);
-            prefabPosition = new Vector3(randomPosX, 0.0f, randomPosZ);
+            RandomAnswerPositionXZ();
         }
 
         transform.position = prefabPosition;
 
     }
 
+    private void RandomAnswerPositionXZ()
+    {
+        randomPosX = Random.Range(-boardGameSizeX, boardGameSizeX + 1);
+        randomPosZ = Random.Range(-boardGameSizeY, boardGameSizeY + 1);
+        prefabPosition = new Vector3(randomPosX, 0.0f, randomPosZ);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (IsInLayerMask(collision.gameObject, snakeLayerMask))
+        if (IsInLayerMask(collision.gameObject, collidersWithObjectsLayerMask))
         {
+            RandomAnswerPositionXZ();
             RePosition();
         }
     }

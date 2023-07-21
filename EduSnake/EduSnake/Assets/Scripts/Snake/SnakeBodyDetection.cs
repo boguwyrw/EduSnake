@@ -8,7 +8,7 @@ public class SnakeBodyDetection : MonoBehaviour
     [SerializeField] private ParticleSystem answerEffect;
     [SerializeField] private GameObject[] snakeBodies;
 
-    public event Action BodyColided;
+    public event Action OnBodyColided;
 
     private void ActivateAnswerCollisionEffect()
     {
@@ -20,7 +20,7 @@ public class SnakeBodyDetection : MonoBehaviour
         GameManager.InstanceGM.ActivateStopMovingSnakeHead();
         answerEffect.Play();
         yield return new WaitUntil(() => answerEffect.isStopped);
-        BodyColided?.Invoke();
+        OnBodyColided?.Invoke();
     }
 
     private void OnCollisionEnter(Collision collision)
