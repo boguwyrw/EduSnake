@@ -23,10 +23,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region Static Variables
-    public static bool IsGameRestarted = false;
-    #endregion
-
     #region SerializeField Variables
     [SerializeField] private GameObject fadePanel;
     [SerializeField] private GameObject startPanel;
@@ -82,9 +78,9 @@ public class GameManager : MonoBehaviour
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         levelNumberText.text = "Level " + currentSceneIndex.ToString();
 
-        if (IsGameRestarted)
+        if (MainGameManager.IsGameRestarted)
         {
-            IsGameRestarted = false;
+            MainGameManager.IsGameRestarted = false;
 
             TurnOnLevelPanel();
         }
@@ -193,7 +189,7 @@ public class GameManager : MonoBehaviour
     public void RestartGameButton()
     {
         loseGameOverPanel.SetActive(false);
-        IsGameRestarted = true;
+        MainGameManager.IsGameRestarted = true;
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(sceneIndex);
     }
