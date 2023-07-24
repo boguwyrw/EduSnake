@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,11 +10,28 @@ public class SnakeCollisionDetection : MonoBehaviour
 
     private Transform snakeParent;
 
+    private SnakeBodyDetection snakeBodyDetection;
+
     private Queue<GameObject> snakePoolQueue = new Queue<GameObject>();
 
     private void Start()
     {
         snakeParent = transform.parent;
+    }
+
+    private void RemoveSnakeBodyParts()
+    {
+        if (snakeParent == null)
+        {
+            snakeParent = transform.parent;
+        }
+
+        for (int i = 1; i < snakeParent.childCount; i++)
+        {
+            snakeParent.GetChild(i).gameObject.SetActive(false);
+        }
+
+        GameManager.InstanceGM.StopGame();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -41,7 +56,7 @@ public class SnakeCollisionDetection : MonoBehaviour
                 GameObject snakeBodyClone = Instantiate(snakeBodyPrefab, lastSnakePartPosition, Quaternion.identity, snakeParent);
                 GameManager.InstanceGM.GetAllSnakeParts();
                 snakePoolQueue.Enqueue(snakeBodyClone);
-                SnakeBodyDetection snakeBodyDetection = snakeBodyClone.GetComponent<SnakeBodyDetection>();
+                snakeBodyDetection = snakeBodyClone.GetComponent<SnakeBodyDetection>();
                 snakeBodyDetection.ActivateSnakeBodyPart();
                 snakeBodyDetection.OnBodyColided += RemoveSnakeBodyParts;
             }
@@ -70,18 +85,8 @@ public class SnakeCollisionDetection : MonoBehaviour
         return (layerMask.value & (1 << obj.layer)) > 0;
     }
 
-    private void RemoveSnakeBodyParts()
+    private void OnDisable()
     {
-        if (snakeParent == null)
-        {
-            snakeParent = transform.parent;
-        }
-       
-        for (int i = 1; i < snakeParent.childCount; i++)
-        {
-            snakeParent.GetChild(i).gameObject.SetActive(false);
-        }
-
-        GameManager.InstanceGM.StopGame();
+        snakeBodyDetection.OnBodyColided -= RemoveSnakeBodyParts;
     }
 }

@@ -2998,8 +2998,8 @@ MonoBehaviour:
   mathTaskGenerator: {fileID: 103377888}
   snakeParticleEffects: {fileID: 272201018}
   snakeOnFireController: {fileID: 864209767}
-  gameSizeX: 33
-  gameSizeY: 31
+  gameSizeX: 31
+  gameSizeY: 30
   startGameLevelTextGO: {fileID: 227976098}
   startLevelButtonGO: {fileID: 227976097}
 --- !u!1 &2040344115

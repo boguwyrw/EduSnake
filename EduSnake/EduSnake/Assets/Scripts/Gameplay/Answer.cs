@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -8,7 +7,6 @@ public class Answer : MonoBehaviour
 {
     [SerializeField] private TMP_Text answerText;
     [SerializeField] private LayerMask collidersWithObjectsLayerMask;
-    //[SerializeField] private LayerMask collidersWithSnakeLayerMask;
 
     private int boardGameSizeX = 0;
     private int boardGameSizeY = 0;
@@ -52,8 +50,6 @@ public class Answer : MonoBehaviour
     {
         List<Transform> allSnake = GameManager.InstanceGM.GetAllSnakeParts();
         float minDistanceToSnake = GameManager.InstanceGM.GetDetectionRange();
-
-        //RandomAnswerPositionXZ();
 
         while (allSnake.Any(s => Vector3.Distance(prefabPosition, s.position) < minDistanceToSnake))
         {
