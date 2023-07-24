@@ -7,6 +7,8 @@ public class PointerArrow : MonoBehaviour
     [SerializeField] private GameObject pointerArrow;
     [SerializeField] private GameObject destinationPoint;
 
+    private Transform correctAnswer;
+
     private float minDistanceToAnswer = 1.85f;
     private float middleValue = 0.6f;
     private float minValue = 0.2f;
@@ -19,16 +21,17 @@ public class PointerArrow : MonoBehaviour
         pointerArrow.SetActive(false);
         destinationPoint.SetActive(false);
         currentMiddleValue = middleValue;
+        correctAnswer = GameManager.InstanceGM.GetCorrectAnswer();
     }
 
     private void LateUpdate()
     {
         if (GameManager.InstanceGM.GetCorrectAnswer() != null && GameManager.InstanceGM.GetAreAnswersSpawned())
         {
-            Vector3 startPosition = new Vector3(transform.parent.position.x, GameManager.InstanceGM.GetCorrectAnswer().position.y, transform.parent.position.z);
-            float distanceToAnswer = Vector3.Distance(transform.position, GameManager.InstanceGM.GetCorrectAnswer().position);
+            Vector3 startPosition = new Vector3(transform.parent.position.x, correctAnswer.position.y, transform.parent.position.z);
+            float distanceToAnswer = Vector3.Distance(transform.position, correctAnswer.position);
             
-            Vector3 viewPos = Camera.main.WorldToViewportPoint(GameManager.InstanceGM.GetCorrectAnswer().position);
+            Vector3 viewPos = Camera.main.WorldToViewportPoint(correctAnswer.position);
 
             if (viewPos.x > 0.0f && viewPos.y < uiCoveringValue && viewPos.y > 0.0f)
             {
@@ -36,7 +39,7 @@ public class PointerArrow : MonoBehaviour
                 {
                     currentMiddleValue += increaseValue;
                 }
-                transform.position = Vector3.Lerp(startPosition, GameManager.InstanceGM.GetCorrectAnswer().position, currentMiddleValue);
+                transform.position = Vector3.Lerp(startPosition, correctAnswer.position, currentMiddleValue);
             }
             else
             {
@@ -44,10 +47,10 @@ public class PointerArrow : MonoBehaviour
                 {
                     currentMiddleValue -= increaseValue;
                 }
-                transform.position = Vector3.Lerp(startPosition, GameManager.InstanceGM.GetCorrectAnswer().position, currentMiddleValue);
+                transform.position = Vector3.Lerp(startPosition, correctAnswer.position, currentMiddleValue);
             }
 
-            transform.LookAt(GameManager.InstanceGM.GetCorrectAnswer());
+            transform.LookAt(correctAnswer);
 
             if (distanceToAnswer < minDistanceToAnswer)
             {
