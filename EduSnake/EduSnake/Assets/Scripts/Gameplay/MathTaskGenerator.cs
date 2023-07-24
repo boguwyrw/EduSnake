@@ -49,6 +49,9 @@ public class MathTaskGenerator : MonoBehaviour
         SpawnAnswers();
     }
 
+    /// <summary>
+    /// Method responsible for spawning correct answer in game map
+    /// </summary>
     private void SpawnCorrectAnswer()
     {
         if (allAnswers.Count > 0)
@@ -64,12 +67,19 @@ public class MathTaskGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method responsible for assigning correct answer in UI element on answer prefab
+    /// </summary>
+    /// <param name="correctAnswerGO"></param>
     private void AssignCorrectAnswer(GameObject correctAnswerGO)
     {
         Answer correctAnswer = correctAnswerGO.GetComponent<Answer>();
         correctAnswer.AssignAnswer(resultNumber);
     }
 
+    /// <summary>
+    /// Method responsible for spawning wrong answer in game map
+    /// </summary>
     private void SpawnWrongAnswer()
     {
         int answersCount = taskNumber + 1;
@@ -89,6 +99,10 @@ public class MathTaskGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method responsible for assigning wrong answer in UI element on answer prefab
+    /// </summary>
+    /// <param name="wrongAnswerGO"></param>
     private void AssignWrongAnswer(GameObject wrongAnswerGO)
     {
         Answer wrongAnswer = wrongAnswerGO.GetComponent<Answer>();
@@ -111,6 +125,9 @@ public class MathTaskGenerator : MonoBehaviour
         return Instantiate(answer, prefabPosition, Quaternion.identity);
     }
 
+    /// <summary>
+    /// Method responsible for hidden all answers during the game
+    /// </summary>
     private void RemoveAllAnswers()
     {
         areAnswersSpawned = false;
@@ -123,12 +140,19 @@ public class MathTaskGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coroutine responsible for delay SpawnAnswers() method
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator SpawnAnswersDelay()
     {
         yield return new WaitForSeconds(spawnAnswersDelayTime);
         SpawnAnswers();
     }
 
+    /// <summary>
+    /// Method responsible for generate tasks, assign them to UI element and spawning all answers (correct and wrong)
+    /// </summary>
     public void SpawnAnswers()
     {
         if (taskNumber < maxTasksNumber)
@@ -155,6 +179,9 @@ public class MathTaskGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method responsible for showing on UI element correct player choice
+    /// </summary>
     public void ShowPlayerCorrectChoose()
     {
         resultText.color = Color.green;
@@ -170,6 +197,9 @@ public class MathTaskGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method responsible for showing on UI element wrong player choice
+    /// </summary>
     public void ShowPlayerWrongChoose()
     {
         resultText.color = Color.red;
@@ -186,6 +216,9 @@ public class MathTaskGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method responsible for showing all answers during the game
+    /// </summary>
     public void ShowAllAnswers()
     {
         for (int i = 0; i < allAnswers.Count; i++)
@@ -194,6 +227,10 @@ public class MathTaskGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method responsible for returning correct answer transform
+    /// </summary>
+    /// <returns></returns>
     public Transform CorrectAnswer()
     {
         if (allAnswers.Count > 0)

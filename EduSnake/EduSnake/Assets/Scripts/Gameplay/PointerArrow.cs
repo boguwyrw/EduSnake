@@ -24,11 +24,19 @@ public class PointerArrow : MonoBehaviour
 
     private void LateUpdate()
     {
+        PointerArrowFuncionality();
+    }
+
+    /// <summary>
+    /// Method responsible for pointer arrow working system and replace them with destination point
+    /// </summary>
+    private void PointerArrowFuncionality()
+    {
         if (GameManager.InstanceGM.GetCorrectAnswer() != null && GameManager.InstanceGM.GetAreAnswersSpawned())
         {
             Vector3 startPosition = new Vector3(transform.parent.position.x, correctAnswer.position.y, transform.parent.position.z);
             float distanceToAnswer = Vector3.Distance(transform.position, correctAnswer.position);
-            
+
             Vector3 viewPos = Camera.main.WorldToViewportPoint(correctAnswer.position);
 
             if (viewPos.x > 0.0f && viewPos.y < uiCoveringValue && viewPos.y > 0.0f)

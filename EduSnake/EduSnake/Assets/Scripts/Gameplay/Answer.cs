@@ -29,11 +29,20 @@ public class Answer : MonoBehaviour
         RePosition();
     }
 
+    /// <summary>
+    /// Method to assign answer to UI element
+    /// </summary>
+    /// <param name="correctAnswer"></param>
     public void AssignAnswer(int correctAnswer)
     {
         answerText.text = correctAnswer.ToString();
     }
 
+    /// <summary>
+    /// Method for generating all wrong answers depending on range in level
+    /// </summary>
+    /// <param name="numberRange"></param>
+    /// <param name="correctAnswer"></param>
     public void GenerateWrongAnswer(int numberRange, int correctAnswer)
     {
         int wrongAnswer = -1;
@@ -46,6 +55,9 @@ public class Answer : MonoBehaviour
         answerText.text = wrongAnswer.ToString();
     }
 
+    /// <summary>
+    /// Method for changing answer position if is to close from obstacles
+    /// </summary>
     public void RePosition()
     {
         List<Transform> allSnake = GameManager.InstanceGM.GetAllSnakeParts();
@@ -60,6 +72,9 @@ public class Answer : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Method for draw random position coordinates for answer
+    /// </summary>
     private void RandomAnswerPositionXZ()
     {
         randomPosX = Random.Range(-boardGameSizeX, boardGameSizeX + 1);

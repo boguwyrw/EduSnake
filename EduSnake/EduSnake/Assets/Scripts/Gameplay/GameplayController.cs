@@ -46,6 +46,9 @@ public class GameplayController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method for display snake lives in UI element
+    /// </summary>
     private void ShowLives()
     {
         if (lives > 1)
@@ -58,16 +61,25 @@ public class GameplayController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method for display player lives in UI element
+    /// </summary>
     private void ShowPoints()
     {
         pointsText.text = "Points: " + points.ToString();
     }
 
+    /// <summary>
+    /// Method for display number of remaining direction arrows in UI element
+    /// </summary>
     private void ShowDirectionArrowText()
     {    
         directionArrowText.text = directionArrowNumber.ToString();
     }
 
+    /// <summary>
+    /// Methods responsible for increasing points during game and display them in UI element
+    /// </summary>
     public void AssignPoints()
     {
         points += 1;
@@ -93,6 +105,9 @@ public class GameplayController : MonoBehaviour
         ShowPoints();
     }
 
+    /// <summary>
+    /// Methods responsible for decreasing lives during game and display them in UI element
+    /// </summary>
     public void RemoveLife()
     {
         if (lives > 0)
