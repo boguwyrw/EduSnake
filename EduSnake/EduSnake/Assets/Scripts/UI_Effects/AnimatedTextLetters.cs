@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -25,6 +24,10 @@ public class AnimatedTextLetters : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coroutine responsible for activate method with text animation in certain time
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator TMProTextAnimationDelay()
     {
         TMProTextAnimation();
@@ -32,6 +35,9 @@ public class AnimatedTextLetters : MonoBehaviour
         canAnimate = false;
     }
 
+    /// <summary>
+    /// Method responsible for text animation after player lose game
+    /// </summary>
     private void TMProTextAnimation()
     {
         animatedText.ForceMeshUpdate();
