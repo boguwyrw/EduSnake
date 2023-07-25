@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 55e64e617a8bfff4ba846574e2651eb9, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8162517b6ec2309499f99e303b29f146, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.2677181, g: 0.46419072, b: 0.61475635, a: 1}
+  m_IndirectSpecularColor: {r: 0.52418274, g: 0.56189764, b: 0.47702086, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5012,11 +5012,11 @@ PrefabInstance:
       objectReference: {fileID: 526987406}
     - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
       propertyPath: fastMovement
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
       propertyPath: slowMovement
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
       propertyPath: horizontalJoystick
