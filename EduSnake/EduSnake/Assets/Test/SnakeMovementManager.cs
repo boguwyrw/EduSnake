@@ -9,8 +9,6 @@ public class SnakeMovementManager : MonoBehaviour
     [SerializeField] private Joystick joystick;
 
     private float snakSpeed = 200.0f;
-    private float rotationSpeed = 200.0f;
-    private float rotationValue = 0.0f;
     private float countUp = 0.0f;
 
     private List<GameObject> snakeBodyParts = new List<GameObject>();
@@ -31,9 +29,7 @@ public class SnakeMovementManager : MonoBehaviour
 
     private void SnakeMove()
     {
-        //snakeRig.velocity = snakeBodyParts[0].transform.forward * Time.deltaTime * snakSpeed;
         snakeRig.velocity = new Vector3(joystick.Horizontal * Time.deltaTime * snakSpeed, snakeRig.velocity.y, joystick.Vertical * Time.deltaTime * snakSpeed);
-        //snakeBodyParts[0].transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime * rotationValue);
         snakeBodyParts[0].transform.rotation = Quaternion.LookRotation(snakeRig.velocity);
 
         SnakeBodyMove();

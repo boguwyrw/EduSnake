@@ -43,6 +43,9 @@ public class SnakeHeadMovement : MonoBehaviour
         BodyPartsMovement();
     }
 
+    /// <summary>
+    /// Method responsible for snake head movement functionality
+    /// </summary>
     private void SnakeHeadMove()
     {
         Vector3 joystickDirection = new Vector3(joystick.Horizontal, 0.0f, joystick.Vertical);
@@ -50,6 +53,9 @@ public class SnakeHeadMovement : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * currentMovement);
     }
 
+    /// <summary>
+    /// Method responsible for snake head rotation functionality
+    /// </summary>
     private void RotateSnakeHead()
     {
         if (snakeDirection != Vector3.zero && rotationSpeed != 0.0f)
@@ -60,6 +66,9 @@ public class SnakeHeadMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method responsible for following movement of snake body parts
+    /// </summary>
     private void BodyPartsMovement()
     {
         if (snakeParent.childCount > 1 && currentMovement > 0.0f)
@@ -79,6 +88,10 @@ public class SnakeHeadMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coroutine responsible for activate fire spark (snake on fire) effect and temporary increasing snake speed
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator FireSparkCollisionDelay()
     {
         float lastCurrentMovement = currentMovement;
@@ -89,45 +102,60 @@ public class SnakeHeadMovement : MonoBehaviour
         GameManager.InstanceGM.TurnOffSnakeOnFireEffect();
     }
 
+    /// <summary>
+    /// Method responsible for assigning first snake movement speed
+    /// </summary>
     public void StartMovingSnakeHead()
     {
         currentMovement = slowMovement;
     }
 
+    /// <summary>
+    /// Method responsible for assigning speed and rotation values on 0 and stop snake
+    /// </summary>
     public void StopMovingSnakeHead()
     {
         currentMovement = 0.0f;
         rotationSpeed = 0.0f;
     }
 
-    public void ResumeMovingSnakeHead()
-    {
-        transform.position = headStartPosition;
-        currentMovement = slowMovement;
-        rotationSpeed = maxRotationSpeed;
-    }
-
+    /// <summary>
+    /// Method responsible for increasing snake movement speed
+    /// </summary>
     public void AssignNextSpeed()
     {
         speedIncreaseValue = movementSpeedInterval / (float)GameManager.InstanceGM.GetMaxTasksNumber();
         currentMovement = currentMovement + speedIncreaseValue;
     }
 
+    /// <summary>
+    /// Method responsible for activate coroutine with particle effect collision
+    /// </summary>
     public void FireSparkCollision()
     {
         StartCoroutine(FireSparkCollisionDelay());
     }
 
+    /// <summary>
+    /// Method responsible for hidding direction arrow during game
+    /// </summary>
     public void HideDirectionArrow()
     {
         directionArrow.SetActive(false);
     }
 
+    /// <summary>
+    /// Method responsible for showing direction arrow during game
+    /// </summary>
     public void ShowDirectionArrow()
     {
         directionArrow.SetActive(true);
     }
 
+    /// <summary>
+    /// Method responsible for returning transform from all snake body parts
+    /// </summary>
+    /// <returns></returns>
     public List<Transform> AllSnakeParts()
     {
         List<Transform> snakeParts = new List<Transform>();

@@ -9,11 +9,18 @@ public class SnakeBodyDetection : MonoBehaviour
 
     public event Action OnBodyColided;
 
+    /// <summary>
+    /// Method responsible for starting coroutine with particle effect after snake collide with answer
+    /// </summary>
     private void ActivateAnswerCollisionEffect()
     {
         StartCoroutine(ActivateCollisionEffectDelay());
     }
 
+    /// <summary>
+    /// Coroutine responsible for activate particle effect and stopping snake movement
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ActivateCollisionEffectDelay()
     {
         GameManager.InstanceGM.ActivateStopMovingSnakeHead();
@@ -30,6 +37,9 @@ public class SnakeBodyDetection : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method responsible for turning on snake body part from list after current part was hidden after collision
+    /// </summary>
     public void ActivateSnakeBodyPart()
     {
         int snakeBodyIndex = UnityEngine.Random.Range(0, snakeBodies.Length);

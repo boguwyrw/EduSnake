@@ -19,6 +19,9 @@ public class SnakeCollisionDetection : MonoBehaviour
         snakeParent = transform.parent;
     }
 
+    /// <summary>
+    /// Method responsible for turning off snake body part after collision with obstacle
+    /// </summary>
     private void RemoveSnakeBodyParts()
     {
         if (snakeParent == null)
@@ -75,7 +78,7 @@ public class SnakeCollisionDetection : MonoBehaviour
     {
         if (IsInLayerMask(other.gameObject, snakeLayers))
         {
-            snakeParticleEffects.ActivateWrongParticleEffect();
+            snakeParticleEffects.ActivateCollisionParticleEffect();
             GameManager.InstanceGM.StopGame();
         }
     }
@@ -87,6 +90,9 @@ public class SnakeCollisionDetection : MonoBehaviour
 
     private void OnDisable()
     {
-        snakeBodyDetection.OnBodyColided -= RemoveSnakeBodyParts;
+        if (snakeBodyDetection != null)
+        {
+            snakeBodyDetection.OnBodyColided -= RemoveSnakeBodyParts;
+        }
     }
 }

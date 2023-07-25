@@ -18,11 +18,17 @@ public class SnakeOnFireController : MonoBehaviour
         snakeOnFireEffect.position = snakeHead.position + offset;
     }
 
+    /// <summary>
+    /// Method responsible for hidding snake on fire particle effect during game
+    /// </summary>
     public void TurnOffFireEffect()
     {
         snakeOnFireEffect.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Method responsible for showing snake on fire particle effect during game
+    /// </summary>
     public void TurnOnFireEffect()
     {
         snakeOnFireEffect.gameObject.SetActive(true);

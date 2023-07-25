@@ -15,11 +15,19 @@ public class GameOverManager : MonoBehaviour
         ActivateDeactivateFade(false);
     }
 
+    /// <summary>
+    /// Method responsible for turning on and off fade during the game
+    /// </summary>
+    /// <param name="fadeOnOff"></param>
     public void ActivateDeactivateFade(bool fadeOnOff)
     {
         fadeGameOverPanel.SetActive(fadeOnOff);
     }
 
+    /// <summary>
+    /// Method responsible for showing on UI final score
+    /// </summary>
+    /// <param name="finalScore"></param>
     public void AssignFinalScore(int finalScore)
     {
         if (PlayerPrefs.HasKey("BestScore"))
