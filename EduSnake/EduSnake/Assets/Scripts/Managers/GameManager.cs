@@ -322,7 +322,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void TurnOffSnakeOnFireEffect()
     {
-        snakeOnFireController.TurnOffFireEffect();
+        snakeOnFireController.TurnOnOffFireEffect(false);
     }
 
     /// <summary>
@@ -330,7 +330,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void TurnOnSnakeOnFireEffect()
     {
-        snakeOnFireController.TurnOnFireEffect();
+        snakeOnFireController.TurnOnOffFireEffect(true);
     }
 
     /// <summary>
