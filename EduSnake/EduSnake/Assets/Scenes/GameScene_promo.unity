@@ -2814,7 +2814,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 50
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -4653,8 +4653,8 @@ MonoBehaviour:
   mathTaskGenerator: {fileID: 103377888}
   snakeParticleEffects: {fileID: 272201018}
   snakeOnFireController: {fileID: 864209767}
-  gameSizeX: 31
-  gameSizeY: 30
+  gameSizeX: 29
+  gameSizeY: 28
   startGameLevelTextGO: {fileID: 227976098}
   startLevelButtonGO: {fileID: 227976097}
 --- !u!1 &2040344115
@@ -5012,11 +5012,11 @@ PrefabInstance:
       objectReference: {fileID: 526987406}
     - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
       propertyPath: fastMovement
-      value: 14
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
       propertyPath: slowMovement
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3084798244563927543, guid: 1be96507ab242394f875b47384c1acaf, type: 3}
       propertyPath: horizontalJoystick

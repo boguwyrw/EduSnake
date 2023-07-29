@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MainGameManager : MonoBehaviour
+public class GameRestartedManager : MonoBehaviour
 {
     #region Static Variables
     public static bool IsGameRestarted = false;

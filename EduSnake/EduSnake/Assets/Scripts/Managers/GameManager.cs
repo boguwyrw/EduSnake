@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private SnakeHeadMovement snakeHeadMovement;
     [SerializeField] private GameplayController gameplayController;
-    [SerializeField] private GameOverManager gameOverManager;
+    [SerializeField] private GameOverUIDisplayManager gameOverManager;
     [SerializeField] private MathTaskGenerator mathTaskGenerator;
     [SerializeField] private SnakeParticleEffects snakeParticleEffects;
     [SerializeField] private SnakeOnFireController snakeOnFireController;
@@ -77,9 +77,9 @@ public class GameManager : MonoBehaviour
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         levelNumberText.text = "Level " + currentSceneIndex.ToString();
 
-        if (MainGameManager.IsGameRestarted)
+        if (GameRestartedManager.IsGameRestarted)
         {
-            MainGameManager.IsGameRestarted = false;
+            GameRestartedManager.IsGameRestarted = false;
 
             TurnOnLevelPanel();
         }
@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
     public void RestartGameButton()
     {
         loseGameOverPanel.SetActive(false);
-        MainGameManager.IsGameRestarted = true;
+        GameRestartedManager.IsGameRestarted = true;
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(sceneIndex);
     }

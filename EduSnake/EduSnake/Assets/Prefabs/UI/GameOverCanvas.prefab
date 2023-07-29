@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1057646464187580550}
   - component: {fileID: 1057646464187580549}
   - component: {fileID: 1057646464187580548}
-  - component: {fileID: 1057646464187580544}
+  - component: {fileID: 6268967341653693491}
   m_Layer: 5
   m_Name: GameOverCanvas
   m_TagString: Untagged
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1057646464187580544
+--- !u!114 &6268967341653693491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1057646464187580795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6eff437a362e947af5b30592924607, type: 3}
+  m_Script: {fileID: 11500000, guid: 043b7bc1db58a4444b58a633dba3dbed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fadeGameOverPanel: {fileID: 2551199202598323039}

@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class GameOverManager : MonoBehaviour
+public class GameOverUIDisplayManager : MonoBehaviour
 {
     [SerializeField] private GameObject fadeGameOverPanel;
 
