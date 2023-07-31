@@ -34,7 +34,7 @@ public class SnakeCollisionDetection : MonoBehaviour
             snakeParent.GetChild(i).gameObject.SetActive(false);
         }
 
-        GameManager.InstanceGM.StopGame();
+        GameManager.Instance.StopGame();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -42,7 +42,7 @@ public class SnakeCollisionDetection : MonoBehaviour
         if (collision.gameObject.layer == 9)
         {
             Vector3 collisionPosition = collision.gameObject.transform.position;
-            GameManager.InstanceGM.ActivateParticleEffect(collisionPosition);
+            GameManager.Instance.ActivateParticleEffect(collisionPosition);
 
             int numberOfBodyParts = transform.parent.childCount;
 
@@ -57,14 +57,14 @@ public class SnakeCollisionDetection : MonoBehaviour
                 Transform lastSnakePart = snakeParent.GetChild(lastSnakePartIndex).GetChild(0);
                 Vector3 lastSnakePartPosition = new Vector3(lastSnakePart.position.x, lastSnakePart.position.y, lastSnakePart.position.z);
                 GameObject snakeBodyClone = Instantiate(snakeBodyPrefab, lastSnakePartPosition, Quaternion.identity, snakeParent);
-                GameManager.InstanceGM.GetAllSnakeParts();
+                GameManager.Instance.GetAllSnakeParts();
                 snakePoolQueue.Enqueue(snakeBodyClone);
                 snakeBodyDetection = snakeBodyClone.GetComponent<SnakeBodyDetection>();
                 snakeBodyDetection.ActivateSnakeBodyPart();
                 snakeBodyDetection.OnBodyColided += RemoveSnakeBodyParts;
             }
 
-            GameManager.InstanceGM.AssignSnakePoints();
+            GameManager.Instance.AssignSnakePoints();
         }
 
         if (collision.gameObject.layer == 10)
@@ -79,7 +79,7 @@ public class SnakeCollisionDetection : MonoBehaviour
         if (IsInLayerMask(other.gameObject, snakeLayers))
         {
             snakeParticleEffects.ActivateCollisionParticleEffect();
-            GameManager.InstanceGM.StopGame();
+            GameManager.Instance.StopGame();
         }
     }
 

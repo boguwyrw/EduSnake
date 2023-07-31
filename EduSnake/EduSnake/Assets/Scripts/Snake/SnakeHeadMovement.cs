@@ -95,11 +95,11 @@ public class SnakeHeadMovement : MonoBehaviour
     private IEnumerator FireSparkCollisionDelay()
     {
         float lastCurrentMovement = currentMovement;
-        GameManager.InstanceGM.TurnOnSnakeOnFireEffect();
+        GameManager.Instance.TurnOnSnakeOnFireEffect();
         currentMovement *= superSpeedIncreaseValue;
         yield return new WaitForSeconds(superSpeedTime);
         currentMovement = lastCurrentMovement;
-        GameManager.InstanceGM.TurnOffSnakeOnFireEffect();
+        GameManager.Instance.TurnOffSnakeOnFireEffect();
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class SnakeHeadMovement : MonoBehaviour
     /// </summary>
     public void AssignNextSpeed()
     {
-        speedIncreaseValue = movementSpeedInterval / (float)GameManager.InstanceGM.GetMaxTasksNumber();
+        speedIncreaseValue = movementSpeedInterval / (float)GameManager.Instance.GetMaxTasksNumber();
         currentMovement = currentMovement + speedIncreaseValue;
     }
 

@@ -38,7 +38,7 @@ public class GameplayController : MonoBehaviour
 
             if (currentTimeToShowArrow < 0.0f)
             {
-                GameManager.InstanceGM.ShowDirArrow();
+                GameManager.Instance.ShowDirArrow();
                 directionArrowNumber--;
                 ShowDirectionArrowText();
                 currentTimeToShowArrow = 0.0f;
@@ -84,7 +84,7 @@ public class GameplayController : MonoBehaviour
     {
         points += 1;
 
-        GameManager.InstanceGM.HideDirArrow();
+        GameManager.Instance.HideDirArrow();
         currentTimeToShowArrow = timeToShowDirectionArrow;
 
         if (PlayerPrefs.HasKey("BestScore"))
@@ -92,7 +92,7 @@ public class GameplayController : MonoBehaviour
             int currentBestScore = PlayerPrefs.GetInt("BestScore");
             if (currentBestScore < points)
             {
-                PlayerPrefs.SetInt("BestScore", points);
+                PlayerPrefs.SetInt("BestScore", points); // wydzieliæ do innej klasy
             }
         }
         else
@@ -100,7 +100,7 @@ public class GameplayController : MonoBehaviour
             PlayerPrefs.SetInt("BestScore", points);
         }
 
-        GameManager.InstanceGM.SetNextSpeed();
+        GameManager.Instance.SetNextSpeed();
 
         ShowPoints();
     }
@@ -119,7 +119,7 @@ public class GameplayController : MonoBehaviour
 
         if (lives == 0)
         {
-            GameManager.InstanceGM.LoseGameOver();
+            GameManager.Instance.LoseGameOver();
         }
     }
 }

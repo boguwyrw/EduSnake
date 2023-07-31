@@ -7,17 +7,17 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     #region GameManager Instance
-    public static GameManager InstanceGM { get; private set; }
+    public static GameManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (InstanceGM != null && InstanceGM != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this);
         }
         else
         {
-            InstanceGM = this;
+            Instance = this;
         }
     }
     #endregion

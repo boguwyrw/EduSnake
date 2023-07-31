@@ -17,8 +17,8 @@ public class Answer : MonoBehaviour
 
     private void Start()
     {
-        boardGameSizeX = GameManager.InstanceGM.GameSizeX;
-        boardGameSizeY = GameManager.InstanceGM.GameSizeY;
+        boardGameSizeX = GameManager.Instance.GameSizeX;
+        boardGameSizeY = GameManager.Instance.GameSizeY;
 
         prefabPosition = transform.position;
     }
@@ -60,8 +60,8 @@ public class Answer : MonoBehaviour
     /// </summary>
     public void RePosition()
     {
-        List<Transform> allSnake = GameManager.InstanceGM.GetAllSnakeParts();
-        float minDistanceToSnake = GameManager.InstanceGM.GetDetectionRange();
+        List<Transform> allSnake = GameManager.Instance.GetAllSnakeParts();
+        float minDistanceToSnake = GameManager.Instance.GetDetectionRange();
 
         while (allSnake.Any(s => Vector3.Distance(prefabPosition, s.position) < minDistanceToSnake))
         {

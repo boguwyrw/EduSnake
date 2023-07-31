@@ -23,7 +23,7 @@ public class SnakeBodyDetection : MonoBehaviour
     /// <returns></returns>
     private IEnumerator ActivateCollisionEffectDelay()
     {
-        GameManager.InstanceGM.ActivateStopMovingSnakeHead();
+        GameManager.Instance.ActivateStopMovingSnakeHead();
         answerEffect.Play();
         yield return new WaitUntil(() => answerEffect.isStopped);
         OnBodyColided?.Invoke();

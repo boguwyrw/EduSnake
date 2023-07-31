@@ -43,9 +43,9 @@ public class MathTaskGenerator : MonoBehaviour
 
     private void Start()
     {
-        boardGameSizeX = GameManager.InstanceGM.GameSizeX;
-        boardGameSizeY = GameManager.InstanceGM.GameSizeY;
-        levelNumberText.text = "Level: " + GameManager.InstanceGM.CurrentSceneIndex;
+        boardGameSizeX = GameManager.Instance.GameSizeX;
+        boardGameSizeY = GameManager.Instance.GameSizeY;
+        levelNumberText.text = "Level: " + GameManager.Instance.CurrentSceneIndex;
         SpawnAnswers();
     }
 
@@ -111,7 +111,7 @@ public class MathTaskGenerator : MonoBehaviour
 
     private GameObject GeneratePrefab(GameObject answer)
     {
-        List<Transform> allSnake = GameManager.InstanceGM.GetAllSnakeParts();
+        List<Transform> allSnake = GameManager.Instance.GetAllSnakeParts();
         Vector3 prefabPosition = Vector3.zero;
 
         do
@@ -193,7 +193,7 @@ public class MathTaskGenerator : MonoBehaviour
         }
         else if (taskNumber == maxTasksNumber)
         {
-            GameManager.InstanceGM.WinGameOver();
+            GameManager.Instance.WinGameOver();
         }
     }
 
@@ -204,7 +204,7 @@ public class MathTaskGenerator : MonoBehaviour
     {
         resultText.color = Color.red;
         resultText.text = "NO";
-        GameManager.InstanceGM.RemoveSnakeLife();
+        GameManager.Instance.RemoveSnakeLife();
         RemoveAllAnswers();
         if (taskNumber < maxTasksNumber)
         {
@@ -212,7 +212,7 @@ public class MathTaskGenerator : MonoBehaviour
         }
         else if (taskNumber == maxTasksNumber)
         {
-            GameManager.InstanceGM.WinGameOver();
+            GameManager.Instance.WinGameOver();
         }
     }
 

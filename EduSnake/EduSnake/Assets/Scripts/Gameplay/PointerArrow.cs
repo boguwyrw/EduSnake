@@ -19,7 +19,7 @@ public class PointerArrow : MonoBehaviour
         pointerArrow.SetActive(false);
         destinationPoint.SetActive(false);
         currentMiddleValue = middleValue;
-        correctAnswer = GameManager.InstanceGM.GetCorrectAnswer();
+        correctAnswer = GameManager.Instance.GetCorrectAnswer();
     }
 
     private void LateUpdate()
@@ -32,7 +32,7 @@ public class PointerArrow : MonoBehaviour
     /// </summary>
     private void PointerArrowFuncionality()
     {
-        if (GameManager.InstanceGM.GetCorrectAnswer() != null && GameManager.InstanceGM.GetAreAnswersSpawned())
+        if (GameManager.Instance.GetCorrectAnswer() != null && GameManager.Instance.GetAreAnswersSpawned())
         {
             Vector3 startPosition = new Vector3(transform.parent.position.x, correctAnswer.position.y, transform.parent.position.z);
             float distanceToAnswer = Vector3.Distance(transform.position, correctAnswer.position);
