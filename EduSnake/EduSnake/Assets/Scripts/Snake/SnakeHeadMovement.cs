@@ -8,8 +8,8 @@ public class SnakeHeadMovement : MonoBehaviour
     [SerializeField] private Rigidbody snakeHeadRigidbody;
     [SerializeField] private GameObject directionArrow;
 
-    [SerializeField] private float slowMovement = 3.0f;
-    [SerializeField] private float fastMovement = 9.0f;
+    [SerializeField] private float slowMovement = 3.2f;
+    [SerializeField] private float fastMovement = 8.0f;
 
     private float currentMovement = 0.0f;
     private float movementSpeedInterval = 0.0f;
@@ -23,14 +23,12 @@ public class SnakeHeadMovement : MonoBehaviour
     private Transform currentBodyPart;
     private Transform previousBodyPart;
 
-    private Vector3 headStartPosition;
     private Vector3 snakeDirection;
 
     private void Start()
     {
         movementSpeedInterval = (slowMovement + fastMovement) / 2.0f;
         snakeParent = transform.parent;
-        headStartPosition = transform.position;
         rotationSpeed = maxRotationSpeed;
 
         HideDirectionArrow();
