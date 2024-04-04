@@ -1112,17 +1112,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3001600983077884707, guid: 9dfe3c6aab50436479629f7d214b57ae, type: 3}
   m_PrefabInstance: {fileID: 3001600981495146780}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1656716036 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1057646464187580544, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
-  m_PrefabInstance: {fileID: 1057646465757100932}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6eff437a362e947af5b30592924607, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1705190366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1650,7 +1639,7 @@ MonoBehaviour:
   levelNumberText: {fileID: 2127460653}
   snakeHeadMovement: {fileID: 272201013}
   gameplayController: {fileID: 486085463}
-  gameOverManager: {fileID: 1656716036}
+  gameOverUIDisplayManager: {fileID: 1057646465757100933}
   mathTaskGenerator: {fileID: 1126970068}
   snakeParticleEffects: {fileID: 272201018}
   snakeOnFireController: {fileID: 1561572901281814892}
@@ -2067,7 +2056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1057646464187580795, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
       propertyPath: m_Name
-      value: GameOverCanvas
+      value: GameOverUIDisplayCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 1057646464214567496, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2115,6 +2104,17 @@ PrefabInstance:
       objectReference: {fileID: 2028237996}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+--- !u!114 &1057646465757100933 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6268967341653693491, guid: 6f73f2226f63d974d84d41cbf05f7335, type: 3}
+  m_PrefabInstance: {fileID: 1057646465757100932}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043b7bc1db58a4444b58a633dba3dbed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1561572901281814891
 PrefabInstance:
   m_ObjectHideFlags: 0

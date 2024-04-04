@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private SnakeHeadMovement snakeHeadMovement;
     [SerializeField] private GameplayController gameplayController;
-    [SerializeField] private GameOverUIDisplayManager gameOverManager;
+    [SerializeField] private GameOverUIDisplayManager gameOverUIDisplayManager;
     [SerializeField] private MathTaskGenerator mathTaskGenerator;
     [SerializeField] private SnakeParticleEffects snakeParticleEffects;
     [SerializeField] private SnakeOnFireController snakeOnFireController;
@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
         crashPanel.SetActive(true);
 
         yield return new WaitForSeconds(crashEffectDelayTime);
-        gameOverManager.ActivateDeactivateFade(true);
+        gameOverUIDisplayManager.ActivateDeactivateFade(true);
         fadePanel.SetActive(false);
         LoseGameOver();
     }
@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
 
         loseGameOverPanel.SetActive(true);
 
-        gameOverManager.AssignFinalScore(gameplayController.Points);
+        gameOverUIDisplayManager.AssignFinalScore(gameplayController.Points);
     }
 
     /// <summary>
@@ -197,10 +197,10 @@ public class GameManager : MonoBehaviour
         joystickGO.SetActive(false);
         gameplayControllerCanvas.SetActive(false);
 
-        gameOverManager.ActivateDeactivateFade(true);
+        gameOverUIDisplayManager.ActivateDeactivateFade(true);
         winGameOverPanel.SetActive(true);
 
-        gameOverManager.AssignFinalScore(gameplayController.Points);
+        gameOverUIDisplayManager.AssignFinalScore(gameplayController.Points);
     }
 
     /// <summary>
