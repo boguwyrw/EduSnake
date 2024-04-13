@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4586f12928b3e1141ae72e4d8d269753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fieldOfView: {fileID: 0}
   joystick: {fileID: 0}
   snakeHeadRigidbody: {fileID: 7171988435522601385}
   directionArrow: {fileID: 8848084324128920637}

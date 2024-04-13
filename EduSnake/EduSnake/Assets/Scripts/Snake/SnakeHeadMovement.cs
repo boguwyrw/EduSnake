@@ -58,8 +58,6 @@ public class SnakeHeadMovement : MonoBehaviour
     {
         if (snakeDirection != Vector3.zero && rotationSpeed != 0.0f)
         {
-            Quaternion rotationTarget = Quaternion.LookRotation(snakeDirection);
-            //transform.rotation = Quaternion.Slerp(transform.rotation, rotationTarget, rotationSpeed * Time.deltaTime);
             transform.rotation = Quaternion.LookRotation(snakeDirection);
         }
     }
